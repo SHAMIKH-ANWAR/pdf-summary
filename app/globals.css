@@ -153,3 +153,18 @@
     max-width:1400px;
   }
 }
+
+@keyframes gradient-x{
+  0%,100%{
+    background-position: left center;
+    background-size: 200% 100%;
+  }
+  50%{
+    background-position: right center;
+    background-size: 200% 100%;
+  }
+}
+
+.animate-gradient-x{
+  animation: gradient-x 3s ease infinite;
+}
