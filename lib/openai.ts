@@ -23,6 +23,7 @@ export async function generateSummaryFromOpenAI(pdfText:string){
             temperature:0.7,
             max_tokens:1500
         });
+        
           return completion.choices[0].message.content;
     } catch(error:any){
         if(error?.status === 429){
