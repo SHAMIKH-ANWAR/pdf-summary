@@ -6,6 +6,7 @@ import { fetchAndExtractPdfText } from "@/lib/langchain";
 import { generateSummaryFromOpenAI } from "@/lib/openai";
 import { formatFileNameAsTitle } from "@/utils/format-utils";
 import { auth } from "@clerk/nextjs/server";
+import { revalidatePath } from "next/cache";
 
 
 export async function generatePdfSummary(uploadResponse: {
@@ -81,12 +82,11 @@ export async function generatePdfSummary(uploadResponse: {
 
 export async function savePdfSummaryToDb({userId,fileUrl,summary,title,fileName}:{userId:string,fileUrl:string,summary:string,title:string,fileName:string}) {
   try {
-    const sql = await getDbConnection();
+    const sql = await getDbConnection()
     await sql`INSERT INTO pdf_summaries(user_id,original_file_url,summary_text,title,file_name) VALUES (${userId}, ${fileUrl}, ${summary}, ${title}, ${fileName})`;
-    console.log("PDF summary saved successfully to the database.");
   } catch (error) {
-    console.error("Error saving PDF summary to DB:", error);
-    throw new Error("Failed to save PDF summary to the database. Please check the logs for more details.");
+    console.log("Error saving PDF summary to DB:", error)
+    throw error;
   }
 }
 
@@ -115,6 +115,8 @@ export async function storePdfSummaryAction({userId,fileUrl,summary,title,fileNa
       
     }
   }
+
+  revalidatePath(`/summaries/${savedSummary.id}`)
   return {
       success: true,
       message: "PDF summary saved successfully",
