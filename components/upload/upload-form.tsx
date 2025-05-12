@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import { generatePdfSummary, storePdfSummaryAction } from "@/actions/upload-actions";
 import { useRef, useState } from "react";
 import { title } from "process";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const schema = z.object({
   file: z
@@ -80,11 +80,14 @@ export default function UploadForm() {
             summary: data.summary,
             fileName:file.name,});
             formRef.current?.reset();
+            router.push(`/summaries/${storeResult.id}`);
         }
       }
     } catch (error) {
       console.error('Error Occured',error)
       formRef.current?.reset();
+    }finally{
+        setIsLoading(false)
     }
    
   };
