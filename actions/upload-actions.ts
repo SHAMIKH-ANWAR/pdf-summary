@@ -76,10 +76,10 @@ export async function generatePdfSummary(uploadResponse: {
 
 export function savePdfSummaryToDb() {
   try {
-    const sql = await getDbConnection();
+    const sql = await getDbConnection()
     await sql`INSERT INTO pdf_summaries(user_id,original_file_url,summary_text,title,file_name) VALUES ()`;
   } catch (error) {
-    console.error("Error saving PDF summary to DB:", error)
+    console.log("Error saving PDF summary to DB:", error)
     throw error;
   }
 }
