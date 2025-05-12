@@ -107,10 +107,7 @@ export async function storePdfSummaryAction({userId,fileUrl,summary,title,fileNa
         message: "Failed to save PDF summary",
       };
     }
-    return {
-      success: true,
-      message: "PDF summary saved successfully",
-    };
+    
   } catch (error) {
     return {
       success: false,
@@ -118,4 +115,8 @@ export async function storePdfSummaryAction({userId,fileUrl,summary,title,fileNa
       
     }
   }
+  return {
+      success: true,
+      message: "PDF summary saved successfully",
+    };
 }
