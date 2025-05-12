@@ -92,7 +92,6 @@ export async function storePdfSummaryAction(){
       return{
         success:false,
         message:'User not found',
-       
       }
     }
     savePdfSummary = await savePdfSummaryToDb();
