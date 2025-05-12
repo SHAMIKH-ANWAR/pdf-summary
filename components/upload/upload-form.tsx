@@ -6,6 +6,7 @@ import { useUploadThing } from "@/utils/uploadthing";
 import { toast } from "sonner";
 import { generatePdfSummary } from "@/actions/upload-actions";
 import { useRef, useState } from "react";
+import { title } from "process";
 
 const schema = z.object({
   file: z
@@ -70,6 +71,10 @@ export default function UploadForm() {
         //show toast
         if(data.summary){
           //save to db
+          await storePdfSummaryAction({
+            title:data.t
+            fileUrl: resp[0].url,
+            summary: data.summary,
         }
       }
     } catch (error) {
