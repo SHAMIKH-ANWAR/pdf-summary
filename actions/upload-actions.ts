@@ -85,7 +85,7 @@ export async function savePdfSummaryToDb({userId,fileUrl,summary,title,fileName}
 }
 
 export async function storePdfSummaryAction({userId,fileUrl,summary,title,fileName}:{userId:string,fileUrl:string,summary:string,title:string,fileName:string}) {
-  let savePdfSummary;
+  let savedSummary:any;
   try {
     const {userId} = await auth();
     if(!userId){
@@ -94,7 +94,13 @@ export async function storePdfSummaryAction({userId,fileUrl,summary,title,fileNa
         message:'User not found',
       }
     }
-    savePdfSummary = await savePdfSummaryToDb({userId,fileName,fileUrl,summary,title});
+    savedSummary = await savePdfSummaryToDb({userId,fileName,fileUrl,summary,title});
+    if(!savedSummary){
+      return {
+        success: false,
+        message: "Failed to save PDF summary",
+      };
+    }
   } catch (error) {
     return {
       success: false,
