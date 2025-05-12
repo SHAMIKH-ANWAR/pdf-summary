@@ -77,7 +77,7 @@ export default function UploadForm() {
             fileUrl: resp[0].serverData.file.url,
             summary: data.summary,
             fileName:file.name,});
-            
+            formRef.current?.reset();
         }
       }
     } catch (error) {
