@@ -84,7 +84,7 @@ export async function savePdfSummaryToDb({userId,fileUrl,summary,title,fileName}
   }
 }
 
-export async function storePdfSummaryAction(){
+export async function storePdfSummaryAction({userId,fileUrl,summary,title,fileName}:{userId:string,fileUrl:string,summary:string,title:string,fileName:string}) {
   let savePdfSummary;
   try {
     const {userId} = await auth();
@@ -94,7 +94,7 @@ export async function storePdfSummaryAction(){
         message:'User not found',
       }
     }
-    savePdfSummary = await savePdfSummaryToDb({});
+    savePdfSummary = await savePdfSummaryToDb({userId,fileName,fileUrl,summary,title});
   } catch (error) {
     return {
       success: false,
