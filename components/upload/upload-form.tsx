@@ -4,7 +4,7 @@ import {  z } from "zod";
 import FormInput from "./upload-form-input";
 import { useUploadThing } from "@/utils/uploadthing";
 import { toast } from "sonner";
-import { generatePdfSummary } from "@/actions/upload-actions";
+import { generatePdfSummary, storePdfSummaryAction } from "@/actions/upload-actions";
 import { useRef, useState } from "react";
 import { title } from "process";
 
@@ -72,9 +72,10 @@ export default function UploadForm() {
         if(data.summary){
           //save to db
           await storePdfSummaryAction({
-            title:data.t
-            fileUrl: resp[0].url,
+            title:data.title,
+            fileUrl: resp[0].serverData.file.url,
             summary: data.summary,
+            fileName:file.name,});
         }
       }
     } catch (error) {
