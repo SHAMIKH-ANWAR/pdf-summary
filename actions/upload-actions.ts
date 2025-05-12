@@ -1,5 +1,6 @@
 "use server";
 
+import { getDbConnection } from "@/lib/db";
 import { generateSummaryFromGemini } from "@/lib/geminiai";
 import { fetchAndExtractPdfText } from "@/lib/langchain";
 import { generateSummaryFromOpenAI } from "@/lib/openai";
@@ -70,6 +71,16 @@ export async function generatePdfSummary(uploadResponse: {
         message:'File upload failed',
         data:null
     }
+  }
+}
+
+export function savePdfSummaryToDb() {
+  try {
+    const sql = await getDbConnection();
+    await sql`INSERT INTO pdf_summaries(user_id,original_file_url,summary_text,title,file_name) VALUES ()`;
+  } catch (error) {
+    console.error("Error saving PDF summary to DB:", error)
+    throw error;
   }
 }
 
