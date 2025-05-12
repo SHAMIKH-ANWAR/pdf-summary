@@ -67,15 +67,17 @@ export default function UploadForm() {
       const {data = null,message = null} = result || {};
   
       if(data){
+        let storeResult:any;
         formRef.current?.reset();
         //show toast
         if(data.summary){
           //save to db
-          await storePdfSummaryAction({
+          storeResult = await storePdfSummaryAction({
             title:data.title,
             fileUrl: resp[0].serverData.file.url,
             summary: data.summary,
             fileName:file.name,});
+            
         }
       }
     } catch (error) {
