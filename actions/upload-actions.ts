@@ -6,6 +6,7 @@ import { fetchAndExtractPdfText } from "@/lib/langchain";
 import { generateSummaryFromOpenAI } from "@/lib/openai";
 import { auth } from "@clerk/nextjs/server";
 
+
 export async function generatePdfSummary(uploadResponse: {
   serverData: { userId: string; file: { url: string; name: string } };
 }) {
@@ -57,10 +58,13 @@ export async function generatePdfSummary(uploadResponse: {
         }
     }
 
+    const formattedFileName = formatFileNameAsTitle(fileName);
+
     return {
       success: true,
       message: "Summary generated successfuly",
       data: {
+        title: formattedFileName,
         summary,
       },
     };
