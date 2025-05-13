@@ -19,7 +19,7 @@ const SummaryHeader = ({ fileUrl, title, createdAt }: { fileUrl: string; title: 
                 <h3 className="text-base xl:text-lg font-semibold text-gray-900 truncate w-4/5">
                     {title}
                 </h3>
-                <p className="text-sm text-gray-500">2024</p>
+                <p className="text-sm text-gray-500">{createdAt}</p>
             </div>
         </div>
     );
@@ -33,6 +33,7 @@ export default function SummaryCard({ summary }: { summary: any }) {
           <DeleteButton />
         </div>
         <Link href={`/summaries/${summary.id}`} className="block p-4 sm:p-6">
+        <div>
           <SummaryHeader 
             fileUrl={summary.original_file_url}
             title={summary.title}
@@ -43,6 +44,7 @@ export default function SummaryCard({ summary }: { summary: any }) {
           </p>
           <div className="mt-2"> {/* Added a div for the date, for spacing */}
              <p className="text-sm text-gray-500">{summary.created_at}</p> {/* Changed to use summary.created_at */}
+          </div>
           </div>
         </Link>
       </Card>
