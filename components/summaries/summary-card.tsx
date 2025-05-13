@@ -19,13 +19,13 @@ const SummaryHeader = ({ fileUrl, title, createdAt }: { fileUrl: string; title: 
                 <h3 className="text-base xl:text-lg font-semibold text-gray-900 truncate w-4/5">
                     {title}
                 </h3>
-                <p className="text-sm text-gray-500">{createdAt}</p> {/*Used createdAt*/}
+                <p className="text-sm text-gray-500">2024</p>
             </div>
         </div>
     );
 };
 
-export default function SummaryCard({ summary }: { summary: Summary }) { //changed type to Summary
+export default function SummaryCard({ summary }: { summary: any }) {
   return (
     <div>
       <Card className="relative h-full">
