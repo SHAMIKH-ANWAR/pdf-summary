@@ -44,7 +44,7 @@ const StatusBadge = ({ status }: { status: string }) => {
   );
 };
 
-export default function SummaryCard({ summary }: { summary: Summary }) {
+export default function SummaryCard({ summary }: { summary: any }) {
   return (
     <div>
       <Card className="relative h-full">
