@@ -1,4 +1,4 @@
-import Card from '@/components/ui/card';
+import {Card} from '@/components/ui/card';
 import DeleteButton from './delete-button'; // Assuming this is in the same directory
 import Link from 'next/link';
 
