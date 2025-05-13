@@ -54,8 +54,8 @@ export default function DashboardPage() {
             </div>
           </div>
           <div>
-            {summaries.map((_,index)=>(
-                <SummaryCard key={}
+            {summaries.map((summary,index)=>(
+                <SummaryCard key={index} summary={summary}/>
             ))}
           </div>
         </div>

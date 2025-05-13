@@ -13,6 +13,7 @@ export default function SummaryCard({ summary }: { summary: any }) { // Added ty
           <h3 className="text-base xl:text-lg font-semibold text-gray-900 truncate w-4/5">
             {summary.title}
           </h3>
+          <p className=''>{summary.summary_text}</p>
           <p className="text-sm text-gray-500">2024</p> {/* Hardcoded year, may need to be dynamic */}
         </Link>
       </Card>
