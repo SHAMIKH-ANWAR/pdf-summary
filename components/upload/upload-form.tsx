@@ -80,7 +80,7 @@ export default function UploadForm() {
             summary: data.summary,
             fileName:file.name,});
             formRef.current?.reset();
-            router.push(`/summaries/${storeResult.id}`);
+            router.push(`/summaries/${storeResult.data.id}`);
         }
       }
     } catch (error) {

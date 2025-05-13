@@ -120,5 +120,11 @@ export async function storePdfSummaryAction({userId,fileUrl,summary,title,fileNa
   return {
       success: true,
       message: "PDF summary saved successfully",
+      data:{
+        id: savedSummary.id,
+        title: savedSummary.title,
+        summary: savedSummary.summary_text,
+        fileUrl: savedSummary.original_file_url,
+      }
     };
 }
