@@ -1,5 +1,5 @@
 import { currentUser } from '@clerk/nextjs/server';
-import {  getDbConnection } from '@/lib/db';
+import { getDbConnection } from '@/lib/db';
 import { revalidatePath } from 'next/cache';
 
 export async function deleteSummary(summaryId: string) {
