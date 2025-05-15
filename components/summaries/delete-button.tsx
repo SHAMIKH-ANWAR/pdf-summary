@@ -1,3 +1,4 @@
+import{ deleteSummaryAction } from '@/actions/summary-actions';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -17,10 +18,12 @@ interface DeleteButtonProps {
 
 export default function DeleteButton({ summaryId }: DeleteButtonProps) {
   const [open, setOpen] = useState(false);
-
+  
   const handleDelete = async () => {
-    // TODO: Delete summary
-    // await deleteSummary(summaryId);
+    const result = await deleteSummaryAction(summaryId);
+    if(!result.success){
+      alert(result);
+    }
     setOpen(false);
   };
 
