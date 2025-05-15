@@ -53,7 +53,7 @@ export default function DeleteButton({ summaryId }: DeleteButtonProps) {
             Cancel
           </Button>
           <Button variant="destructive" onClick={handleDelete}>
-            Delete
+            {isPending ? "Deleting..." : "Delete"}
           </Button>
         </DialogFooter>
       </DialogContent>
