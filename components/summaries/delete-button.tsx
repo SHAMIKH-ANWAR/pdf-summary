@@ -10,7 +10,7 @@ import {
   DialogFooter,
 } from '@/components/ui/dialog';
 import { Trash2 } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 
 interface DeleteButtonProps {
   summaryId: string;
@@ -18,7 +18,7 @@ interface DeleteButtonProps {
 
 export default function DeleteButton({ summaryId }: DeleteButtonProps) {
   const [open, setOpen] = useState(false);
-  
+  const [isPending,startTransition] = useTransition();
   const handleDelete = async () => {
     const result = await deleteSummaryAction(summaryId);
     if(!result.success){
