@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/dialog';
 import { Trash2 } from 'lucide-react';
 import { useState, useTransition } from 'react';
+import { start } from 'repl';
 
 interface DeleteButtonProps {
   summaryId: string;
@@ -20,11 +21,13 @@ export default function DeleteButton({ summaryId }: DeleteButtonProps) {
   const [open, setOpen] = useState(false);
   const [isPending,startTransition] = useTransition();
   const handleDelete = async () => {
+    startTransition(async () =>  {
     const result = await deleteSummaryAction(summaryId);
     if(!result.success){
       alert(result);
     }
     setOpen(false);
+  })
   };
 
   return (
