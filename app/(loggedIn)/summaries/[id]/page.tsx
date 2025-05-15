@@ -1,3 +1,4 @@
+import BgGradient from '@/components/common/bg-gradient';
 import { getSummaryById } from '@/lib/summary';
 import { FileText } from 'lucide-react';
 import { notFound } from 'next/navigation';
@@ -25,7 +26,7 @@ export default async function SummaryPage({ params }: SummaryPageProps) {
 
   return (
     <div className="relative isolate min-h-screen bg-gradient-to-b from-rose-50/10 to-white">
-      <div className="bgGradient className="from-rose-400 via-rose-300 to-orange-200" />
+      <BgGradient className="from-rose-400 via-rose-300 to-orange-200" />
       <div className="container mx-auto flex flex-col gap-4 p-4">
         <div className="container mx-auto flex flex-col gap-4 p-4">
           <div className="mx-auto flex max-w-2xl flex-col gap-4">
