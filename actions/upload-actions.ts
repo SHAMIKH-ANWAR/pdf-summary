@@ -83,7 +83,7 @@ export async function generatePdfSummary(uploadResponse: {
 export async function savePdfSummaryToDb({userId,fileUrl,summary,title,fileName}:{userId:string,fileUrl:string,summary:string,title:string,fileName:string}) {
   try {
     const sql = await getDbConnection()
-    await sql`INSERT INTO pdf_summaries(user_id,original_file_url,summary_text,title,file_name) VALUES (${userId}, ${fileUrl}, ${summary}, ${title}, ${fileName})`;
+    await sql`INSERT INTO pdf_summaries(user_id,original_file_url,summary_text,title,file_name) VALUES (${userId}, ${fileUrl}, ${summary}, ${title}, ${fileName}) RETURNING id,created_at`;
   } catch (error) {
     console.log("Error saving PDF summary to DB:", error)
     throw error;
