@@ -37,7 +37,7 @@ export default async function SummaryPage({ params }: SummaryPageProps) {
         <div className="flex flex-col">
           <SummaryHeader title={title} createdAt={created_at} readingTime={readingTime}  />
         </div>
-        {file_name && <SourceInfo fileName={file_name} />}
+        {file_name && <SourceInfo filename={file_name} />}
         <div className="relative mt-4 sm:mt-8 lg:mt-16">
           <div className="relative p-4 sm:p-6 lg:p-8
             bg-white/80 backdrop-blur-md rounded-2xl

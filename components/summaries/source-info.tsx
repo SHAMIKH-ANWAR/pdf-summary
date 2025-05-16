@@ -14,7 +14,7 @@ export function SourceInfo({
   originalFileUrl: string;
   title: string;
   summaryText: string;
-  createdAt: Date;
+  createdAt: any;
 }) {
   return (
     <div className="flex-col lg:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
