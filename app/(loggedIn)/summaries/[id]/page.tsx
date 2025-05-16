@@ -1,4 +1,5 @@
 import BgGradient from '@/components/common/bg-gradient';
+import { SourceInfo } from '@/components/summaries/source-info';
 import SummaryHeader from '@/components/summaries/summary-header';
 import { getSummaryById } from '@/lib/summary';
 import { FileText } from 'lucide-react';
