@@ -1,6 +1,6 @@
-import { ExternalLink } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { FileText } from 'lucide-react';
+import { ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { FileText } from "lucide-react";
 
 export function SourceInfo({
   filename,
@@ -25,11 +25,14 @@ export function SourceInfo({
         <Button
           variant="ghost"
           size="sm"
-          className='h-8 px-3 text-rose-600'
-        <a href={originalFileUrl} target='_blank' rel='noopener noreferrer'>
-          <ExternalLink className='h-4 w-4 mr-1' />
+          className="h-8 px-3 text-rose-600 hover:text-rose-700 hover:bg-rose-50"
+          asChild
+        >
+          <a href={originalFileUrl} target="_blank" rel="noopener noreferrer">
+            <ExternalLink className="h-4 w-4 mr-1" />
             View Original
-        </a>
+          </a>
+        </Button>
         <DownloadButtonSummary
           title={title}
           summaryText={summaryText}
