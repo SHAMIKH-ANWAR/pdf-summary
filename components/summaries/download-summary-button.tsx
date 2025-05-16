@@ -23,6 +23,7 @@ export function DownloadButtonSummary({
     link.download = `${title.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}.${originalFilename
       .split('.')
       .pop()}`;
+      document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
