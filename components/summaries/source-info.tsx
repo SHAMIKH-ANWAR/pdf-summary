@@ -22,12 +22,14 @@ export function SourceInfo({
         <span>Source: {filename}</span>
       </div>
       <div className="flex gap-2">
-        <Button variant="ghost" size="sm" asChild>
-          <ExternalLink href={originalFileUrl} target="_blank">
-            <ExternalLink className="h-4 w-4 mr-1" />
+        <Button
+          variant="ghost"
+          size="sm"
+          className='h-8 px-3 text-rose-600'
+        <a href={originalFileUrl} target='_blank' rel='noopener noreferrer'>
+          <ExternalLink className='h-4 w-4 mr-1' />
             View Original
-          </ExternalLink>
-        </Button>
+        </a>
         <DownloadButtonSummary
           title={title}
           summaryText={summaryText}
