@@ -1,3 +1,5 @@
+'use client';
+
 import{ deleteSummaryAction } from '@/actions/summary-actions';
 import { Button } from '@/components/ui/button';
 import {
@@ -11,7 +13,7 @@ import {
 } from '@/components/ui/dialog';
 import { Trash2 } from 'lucide-react';
 import { useState, useTransition } from 'react';
-import { start } from 'repl';
+
 
 interface DeleteButtonProps {
   summaryId: string;
