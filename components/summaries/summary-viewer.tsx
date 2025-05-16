@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { NavigationControls } from './navigation-controls';
-import { ProgressBar } from '@/components/progress-bar';
+import { ProgressBar } from '@/components/summaries/progress-bar';
 
 interface SummaryViewerProps {
   summary: string;
