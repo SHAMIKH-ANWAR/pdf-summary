@@ -20,6 +20,9 @@ export function ProgressBar({ sections, currentSection, onSectionSelect }: Progr
     <div className="absolute top-0 left-0 right-0 z-20 bg-background/80 backdrop-blur-sm pt-4 pb-2 border-b border-rose-50/10">
       <div className="flex gap-1.5 px-4 overflow-hidden">
         {sections.map((_, index) => (
+          <div>
+
+          
           <div
             key={index}
             className={cn(
