@@ -33,7 +33,7 @@ export const parseSection = (section: string): { title: string; points: string[]
   };
 };
 
-function parsePoint(point: string) {
+export function parsePoint(point: string) {
   const isNumbered = /^\d+\./.test(point);
   const isMainPoint = /^•/.test(point);
   
@@ -46,7 +46,7 @@ function parsePoint(point: string) {
   return { isNumbered, isMainPoint, hasEmoji, isEmpty };
 }
 
-function parseEmojiPoint(content: string) {
+ export function parseEmojiPoint(content: string) {
   const cleanContent = content.replace(/[•]\s*/, '').trim();
   
   const matches = cleanContent.match(/^(\p{Emoji}+)(.+)$/u);

@@ -1,7 +1,7 @@
-
+import { parseEmojiPoint, parsePoint } from "@/utils/summary-helpers";
 
 const EmojiPoint = ({ point }: { point: string }) => {
-  const { emoji, text } = parseEmojiPo(point) ?? {};
+  const { emoji, text } = parseEmojiPoint(point) ?? {};
 
   return (
     <div className="group relative bg-linear-to-br from-gray-200/[0.08] to-gray-400/[0.03] p-4 rounded-2xl border border-gray-500/10 hover:shadow-lg transition-all">
