@@ -11,6 +11,14 @@ interface SummaryViewerProps {
   summary: string;
 }
 
+const SectionTitle = ({ title }: { title: string }) => {
+  return (
+    <div className='flex flex-col gap-2 mb-6 sticky top-0 pt-2 pb-4 bg-background/80 backdrop-blur-xs z-10'>
+      <h2 className='text-3xl lg:text-4xl'>{title}</h2>
+    </div>
+  );
+};
+
 export function SummaryViewer({ summary }: SummaryViewerProps) {
   const [currentSection, setCurrentSection] = useState(0);
   const sections = summary.split('\n#').filter(Boolean).map((section) => section.trim()).map(parseSection);
