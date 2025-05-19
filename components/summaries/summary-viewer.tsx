@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { NavigationControls } from './navigation-controls';
 import { ProgressBar } from '@/components/summaries/progress-bar';
+import { parseSection } from '@/utils/summary-helpers';
 
 interface SummaryViewerProps {
   summary: string;
@@ -11,7 +12,7 @@ interface SummaryViewerProps {
 
 export function SummaryViewer({ summary }: SummaryViewerProps) {
   const [currentSection, setCurrentSection] = useState(0);
-  const sections = summary.split('\n\n').filter(Boolean);
+  const sections = summary.split('\n#').filter(Boolean).map((section) => section.trim()).map(parseSection);
   const totalSections = sections.length;
 
   const handleNext = () => {

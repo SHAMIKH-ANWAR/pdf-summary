@@ -1,8 +1,6 @@
 export const parseSection = (section: string): { title: string; points: string[] } => {
   // Extract and clean the title
-  const lines = section.split('\n');
-  const title = lines[0] || '';
-  const content = lines.slice(1);
+  const [title, ...content] = section.split('\n');
   const cleanTitle = title.startsWith('#')
     ? title.substring(1).trim()
     : title.trim();
