@@ -5,6 +5,7 @@ import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { NavigationControls } from './navigation-controls';
 import { ProgressBar } from '@/components/summaries/progress-bar';
 import { parseSection } from '@/utils/summary-helpers';
+import ContentSection from './content-section';
 
 interface SummaryViewerProps {
   summary: string;
@@ -32,12 +33,14 @@ export function SummaryViewer({ summary }: SummaryViewerProps) {
       <ProgressBar sections={sections} currentSection={currentSection} onSectionSelect={onSectionSelect} />
       <div className="h-full overflow-y-auto scrollbar-hide pt-12 sm:pt-20 sm:pb-24">
         <div className="px-4 sm:px-6 py-4 sm:py-6">
-          {sections[currentSection] && (
+          {/* {sections[currentSection] && (
             <CardTitle className="px-4 sm:px-6 text-lg sm:text-xl font-semibold">{sections[currentSection].title}</CardTitle>
           )}
           <CardContent className="px-4 sm:px-6 text-sm sm:text-base text-muted-foreground">
             {sections[currentSection]?.points?.join('\n')}
-          </CardContent>
+          </CardContent> */}
+          <SectionTitle title={sections[currentSection]?.title || ''}/>
+          <ContentSection title={sections[currentSection]?.title || ''} points={sections[currentSection]?.points || []} />
         </div>
       </div>
       <NavigationControls
