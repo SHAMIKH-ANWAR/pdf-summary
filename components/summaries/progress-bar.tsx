@@ -1,10 +1,19 @@
 import { cn } from '@/lib/utils';
 
+
+interface Section {
+  title: string;
+  points: string[];
+}
+
+
 interface ProgressBarProps {
-  sections: string[];
+  sections: Section[];
   currentSection: number;
   onSectionSelect: (index: number) => void;
 }
+
+
 
 export function ProgressBar({ sections, currentSection, onSectionSelect }: ProgressBarProps) {
   return (

@@ -33,13 +33,10 @@ export function SummaryViewer({ summary }: SummaryViewerProps) {
       <div className="h-full overflow-y-auto scrollbar-hide pt-12 sm:pt-20 sm:pb-24">
         <div className="px-4 sm:px-6 py-4 sm:py-6">
           {sections[currentSection] && (
-            <CardTitle className="px-4 sm:px-6 text-lg sm:text-xl font-semibold">{sections[currentSection].split('\n')[0]}</CardTitle>
+            <CardTitle className="px-4 sm:px-6 text-lg sm:text-xl font-semibold">{sections[currentSection].title}</CardTitle>
           )}
           <CardContent className="px-4 sm:px-6 text-sm sm:text-base text-muted-foreground">
-            {sections[currentSection]
-              ?.split('\n')
-              .slice(1)
-              .join('\n')}
+            {sections[currentSection]?.points?.join('\n')}
           </CardContent>
         </div>
       </div>
