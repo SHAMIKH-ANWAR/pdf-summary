@@ -16,8 +16,6 @@ export function ProgressBar({ sections, currentSection, onSectionSelect }: Progr
             className={cn(
               'h-1.5 rounded-full bg-rose-500/30 transition-all duration-300',
               index === currentSection ? 'w-full':currentSection > index ? 'w-full opacity-10' : 'w-0',
-              index === currentSection && 'scale-105',
-              'hover:bg-rose-600/80 cursor-pointer'
             )}
             style={{ flexGrow: 1 }}
             onClick={() => onSectionSelect(index)}
