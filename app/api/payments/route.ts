@@ -35,6 +35,7 @@ export const POST = async (req: NextRequest) => {
 
       case 'subscription.activated':
         console.log('🚀 Subscription activated:', event.payload.subscription.entity);
+        
         // Mark user as active in DB
         break;
 
