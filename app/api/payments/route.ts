@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
+import { handleSubscriptionActivated, handleSubscriptionCancelled } from '@/lib/payments';
 
 export const POST = async (req: NextRequest) => {
   const webhookSecret = process.env.RAZORPAY_WEBHOOK_SECRET!;
@@ -35,7 +36,7 @@ export const POST = async (req: NextRequest) => {
 
       case 'subscription.activated':
         console.log('🚀 Subscription activated:', event.payload.subscription.entity);
-        
+        handleSubscriptionActivated(event.payload.subscription.entity);
         // Mark user as active in DB
         break;
 
@@ -49,6 +50,7 @@ export const POST = async (req: NextRequest) => {
 
       case 'subscription.cancelled':
         console.log('🛑 Subscription cancelled:', event.payload.subscription.entity);
+        handleSubscriptionCancelled(event.payload.subscription.entity);
         // Revoke access, notify user
         break;
 
