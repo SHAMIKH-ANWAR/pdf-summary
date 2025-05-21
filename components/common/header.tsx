@@ -4,6 +4,7 @@ import { FileText } from "lucide-react";
 import { NavLink } from "./nav-link";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { UserButton } from "@clerk/nextjs";
+import PlanBadge from "./plan-badge";
 const Header = () => {
   return (
     <nav className="container flex items-center justify-between py-4 lg:px-8 px-2 mx-auto">
@@ -27,7 +28,7 @@ const Header = () => {
           <div className="flex gap-2 items-center">
             <Link href="/upload">Upload a PDF</Link>
             <div>
-              Pro
+              <PlanBadge/>
               <SignedIn>
                 <UserButton />
               </SignedIn>
