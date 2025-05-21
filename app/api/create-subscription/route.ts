@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const { planId } = body;
-    const {userId} = auth();
+    const { userId } = await auth();
     
 
     const subscription = await razorpay.subscriptions.create({
