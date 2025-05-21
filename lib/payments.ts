@@ -44,7 +44,7 @@ async function createOrUpdateUser({
     const sql = await getDbConnection();
     const [user] = await sql`SELECT * FROM users WHERE email = ${email}`;
     console.log('User found:', user);
-    if (user.length === 0 || !user) {
+    if (!user || user.length === 0 ) {
       console.log('Creating new user');
       await sql`INSERT INTO users (email, full_name, customer_id, plan_id, status)
                 VALUES (${email}, ${fullName}, ${customerId}, ${planId}, ${status})`;
