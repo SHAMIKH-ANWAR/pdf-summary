@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils"
 // import Link from "next/link"
 import { ArrowRight, CheckIcon } from "lucide-react"
 import { Button } from "../ui/button"
+import { isDev } from "@/utils/helpers"
 
 type PriceType = {
     id:string,
@@ -23,7 +24,7 @@ const plans:PriceType[] = [
         items:['5 PDF summaries per month'],
         description:'For personal use',
         paymentLink:'',
-        priceId:'plan_QX9EV669OhB0L7'
+        priceId: isDev?'plan_QX9EV669OhB0L7':''
     },
     {
         id:'pro',
@@ -32,7 +33,7 @@ const plans:PriceType[] = [
         items:['Unlimited PDF summaries','Priority processing','24/7 priority support','Markdown Export'],
         description:'For professionals and teams',
         paymentLink:'',
-        priceId:'plan_QX9HPNX2i0freE'
+        priceId:isDev?'plan_QX9HPNX2i0freE':''
     }
 ];
 
