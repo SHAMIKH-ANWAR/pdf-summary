@@ -2,8 +2,8 @@ import { getDbConnection } from './db';
 
 export async function handleSubscriptionActivated(subscription: any) {
   console.log('Subscription activated:', subscription);
-  const customerId = subscription.customer_id;
-  const planId = subscription.plan_id;
+  const customerId = subscription?.customer_id;
+  const planId = subscription?.plan_id;
   const email = subscription.notes?.email || ''; // Ensure email is collected earlier
  
   const fullName = subscription.notes?.name || '';
