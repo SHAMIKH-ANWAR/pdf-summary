@@ -36,9 +36,10 @@ export const POST = async (req: NextRequest) => {
         break;
 
       case 'subscription.activated':
-        console.log('🚀 Subscription activated:', event.payload.subscription.entity);
+        console.log('🚀 Subscription activated:', event.payload.subscription.entity); 
+        // const {notes,id} = event.payload.subscription.entity;
+        // const userEmail = notes.userEmail;
         await handleSubscriptionActivated(event.payload.subscription.entity);
-        // Mark user as active in DB
         break;
 
       case 'subscription.pending':

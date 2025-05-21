@@ -13,6 +13,8 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { planId } = body;
 
+    
+
     const subscription = await razorpay.subscriptions.create({
       plan_id: planId,
       total_count: 12, // or 1 for yearly
