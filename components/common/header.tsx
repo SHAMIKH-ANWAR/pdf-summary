@@ -7,31 +7,16 @@ import { useState } from "react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import PlanBadge from "./plan-badge"
 import { Separator } from "@/components/ui/separator"
-import { currentUser } from "@clerk/nextjs/server"
 
-const  Header = () => {
+type UserPlanData = {
+  priceId: string | null
+  planName: string
+  status: string | null
+} | null
+
+const Header = ({ userPlanData }: { userPlanData: UserPlanData }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const user = await currentUser();
-  if (!user?.id) {
-    return null;
-  }
-  //   console.log(user);
-  const email = user?.emailAddresses?.[0]?.emailAddress;
-  let priceId: string | null = null;
-  let planName = "Buy a plan";
-  const result = await getPriceIdForActiveUser(email);
-  if (email) {
-    priceId = result?.price_id ?? null;
-  }
 
-  if (result?.status === "cancelled") {
-    planName = "Buy a plan";
-  }
-  const plan = pricingPlans.find((plan) => plan.priceId === priceId);
-
-  if (plan && result?.status !== "cancelled") {
-    planName = plan.name;
-  }
   return (
     <nav className="container flex items-center justify-between py-4 px-2 lg:px-8 mx-auto">
       <div className="flex lg:flex-1">
@@ -60,7 +45,9 @@ const  Header = () => {
             <Link href="/upload" className="text-sm lg:text-base hover:text-rose-600 transition-colors">
               Upload a PDF
             </Link>
-            <PlanBadge />
+            {userPlanData && (
+              <PlanBadge priceId={userPlanData.priceId} planName={userPlanData.planName} status={userPlanData.status} />
+            )}
             <UserButton />
           </div>
         </SignedIn>
@@ -122,7 +109,13 @@ const  Header = () => {
                 <Separator className="w-4/5 bg-rose-200/50" />
 
                 <div className="flex items-center justify-center gap-2 mt-6 mb-2">
-                  <PlanBadge />
+                  {userPlanData && (
+                    <PlanBadge
+                      priceId={userPlanData.priceId}
+                      planName={userPlanData.planName}
+                      status={userPlanData.status}
+                    />
+                  )}
                   <UserButton />
                 </div>
               </SignedIn>
