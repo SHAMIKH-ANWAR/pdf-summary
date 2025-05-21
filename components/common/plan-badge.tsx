@@ -1,3 +1,4 @@
+"use client";
 import { getPriceIdForActiveUser } from "@/lib/user";
 import { pricingPlans } from "@/utils/constants";
 import { currentUser } from "@clerk/nextjs/server";
