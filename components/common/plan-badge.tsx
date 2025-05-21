@@ -13,10 +13,16 @@ export default async function PlanBadge() {
 //   console.log(user);
   const email = user?.emailAddresses?.[0]?.emailAddress;
   let priceId: string | null = null;
-  if (email) {
-    priceId = await getPriceIdForActiveUser(email);
-  }
   let planName = "Buy a plan";
+  if (email) {
+    const result = await getPriceIdForActiveUser(email);
+    if(result?.status === 'canceled'){
+    planName = "Cancelled"
+  }
+    priceId = result?.price_id ?? null;
+  }
+  
+  
   const plan = pricingPlans.find((plan) => plan.priceId === priceId);
 
   if (plan) {
