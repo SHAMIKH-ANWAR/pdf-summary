@@ -27,12 +27,12 @@ const Header = () => {
         <SignedIn>
           <div className="flex gap-2 items-center">
             <Link href="/upload">Upload a PDF</Link>
-            <div>
+            {/* <div> */}
               <PlanBadge/>
               <SignedIn>
                 <UserButton />
               </SignedIn>
-            </div>
+            {/* </div> */}
             {/* <Button variant="outline">Sign out</Button> */}
           </div>
         </SignedIn>
