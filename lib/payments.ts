@@ -67,6 +67,7 @@ export async function handlePaymentSuccess(payment: any) {
   const userId = payment.customer_id;
   const userEmail = payment.email;
   let priceId;
+  const razorpayPaymentId = payment.order_id;
   if(amount === 20){
     priceId = 'plan_QX9EV669OhB0L7'
   }else{
@@ -74,6 +75,7 @@ export async function handlePaymentSuccess(payment: any) {
   }
 
   const sql = await getDbConnection();
-  const 
+  await sql`INSERT INTO payments (payment_id, user_id, amount, status, price_id, user_email)
+            VALUES (${id}, ${userId}, ${amount}, ${status}, ${priceId}, ${userEmail})`;
 
 }
