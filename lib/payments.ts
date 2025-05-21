@@ -66,6 +66,14 @@ export async function handlePaymentSuccess(payment: any) {
   const status = payment.status;
   const userId = payment.customer_id;
   const userEmail = payment.email;
-  
+  let priceId;
+  if(amount === 20){
+    priceId = 'plan_QX9EV669OhB0L7'
+  }else{
+    priceId = 'plan_QX9HPNX2i0freE'
+  }
+
+  const sql = await getDbConnection();
+  const 
 
 }
