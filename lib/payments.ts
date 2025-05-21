@@ -51,7 +51,7 @@ async function createOrUpdateUser({
                 console.log('User created');
     } else {
       console.log('Updating existing user');
-      await sql`UPDATE users SET status = ${status}, plan_id = ${planId} WHERE email = ${email}`;
+      await sql`UPDATE users SET status = ${status}, price_id = ${planId} WHERE email = ${email}`;
       console.log('User updated');
     }
   } catch (error) {
