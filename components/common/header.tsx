@@ -2,7 +2,11 @@
 
 import Link from "next/link";
 import { FileText, Menu, X } from "lucide-react";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { 
+  SignedIn, 
+  SignedOut, 
+  UserButton 
+} from "@clerk/nextjs/client";
 import PlanBadge from "./plan-badge";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
