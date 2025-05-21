@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
-import { handleSubscriptionActivated, handleSubscriptionCancelled } from '@/lib/payments';
+import { handlePaymentSuccess, handleSubscriptionActivated, handleSubscriptionCancelled } from '@/lib/payments';
 
 export const POST = async (req: NextRequest) => {
   const webhookSecret = process.env.RAZORPAY_WEBHOOK_SECRET!;
@@ -31,7 +31,7 @@ export const POST = async (req: NextRequest) => {
 
       case 'payment.captured':
         console.log('✅ Payment captured:', event.payload.payment.entity);
-         
+         await handlePaymentSuccess(event.payload.payment.entity);
         // Mark subscription/payment success in NeonDB
         break;
 

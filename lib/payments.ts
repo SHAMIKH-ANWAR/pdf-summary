@@ -60,19 +60,10 @@ async function createOrUpdateUser({
 }
 
 export async function handlePaymentSuccess(payment: any) {
-  const customerId = payment.customer_id;
-  const planId = payment.plan_id;
-  const email = payment.notes?.userEmail || ''; // Ensure email is collected earlier
-  const fullName = payment.notes?.name || '';
+  const id = payment.id;
+  let amount = payment.amount;
+  amount = amount / 100; // Convert to original amount
+  const status = payment.status;
+  
 
-  if (email && planId) {
-    console.log('Creating/updating user in DB');
-    await createOrUpdateUser({
-      email,
-      fullName,
-      customerId,
-      planId,
-      status: 'active',
-    });
-  }
 }
