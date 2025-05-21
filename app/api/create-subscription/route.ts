@@ -1,33 +1,27 @@
-import { auth } from "@clerk/nextjs"; // Clerk's auth helper
+// app/api/create-subscription/route.ts
+
+import { auth } from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
 import Razorpay from "razorpay";
+
+const razorpay = new Razorpay({
+  key_id: process.env.RAZORPAY_KEY_ID!,
+  key_secret: process.env.RAZORPAY_SECRET_KEY!,
+});
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const { planId } = body;
-
-    const { userId } = auth(); // Get authenticated user's ID
-
-    if (!userId) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
-
-    const user = await fetch(`https://api.clerk.dev/v1/users/${userId}`, {
-      headers: {
-        Authorization: `Bearer ${process.env.CLERK_SECRET_KEY}`,
-      },
-    }).then(res => res.json());
-
-    const userEmail = user.email_addresses?.[0]?.email_address;
+    const {userId} = auth();
+    
 
     const subscription = await razorpay.subscriptions.create({
       plan_id: planId,
-      total_count: 12,
+      total_count: 12, // or 1 for yearly
       customer_notify: 1,
       notes: {
-        userEmail: userEmail || "unknown@example.com",
-        userId,
+        userEmail: "user@example.com", // Replace with actual user info if logged in
       },
     });
 
