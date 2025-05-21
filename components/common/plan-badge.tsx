@@ -47,6 +47,49 @@
 // }
 
 
+// "use client"
+
+// import { Badge } from "@/components/ui/badge"
+// import { cn } from "@/lib/utils"
+// import { Crown } from "lucide-react"
+// import { useEffect, useState } from "react"
+
+// // Client-side version of PlanBadge that receives props
+// export default function PlanBadge({
+//   priceId = null,
+//   planName = "Buy a plan",
+//   status = null,
+// }: {
+//   priceId?: string | null
+//   planName?: string
+//   status?: string | null
+// }) {
+//   const [isClient, setIsClient] = useState(false)
+
+//   useEffect(() => {
+//     setIsClient(true)
+//   }, [])
+
+//   // Don't render anything during SSR to prevent hydration mismatch
+//   if (!isClient) {
+//     return null
+//   }
+
+//   return (
+//     <Badge
+//       variant="outline"
+//       className={cn(
+//         "ml-2 bg-linear-to-r from-amber-100 to-amber-200 border-amber-300 flex flex-row items-center text-xs",
+//         !priceId && "from-rose-100 to-red-200 border-red-300",
+//       )}
+//     >
+//       <Crown className={cn("w-3 h-3 mr-1 text-amber-600", !priceId && "text-red-600")} />
+//       {planName}
+//     </Badge>
+//   )
+// }
+
+
 "use client"
 
 import { Badge } from "@/components/ui/badge"
@@ -79,11 +122,11 @@ export default function PlanBadge({
     <Badge
       variant="outline"
       className={cn(
-        "ml-2 bg-linear-to-r from-amber-100 to-amber-200 border-amber-300 flex flex-row items-center text-xs",
-        !priceId && "from-rose-100 to-red-200 border-red-300",
+        "ml-2 bg-gradient-to-r from-rose-100 to-rose-200 border-rose-300 flex flex-row items-center text-xs shadow-sm",
+        !priceId && "from-rose-200 to-red-200 border-red-300",
       )}
     >
-      <Crown className={cn("w-3 h-3 mr-1 text-amber-600", !priceId && "text-red-600")} />
+      <Crown className={cn("w-3 h-3 mr-1 text-rose-600", !priceId && "text-red-600")} />
       {planName}
     </Badge>
   )
