@@ -10,7 +10,7 @@ export default async function PlanBadge() {
   if (!user?.id) {
     return null;
   }
-  console.log(user);
+//   console.log(user);
   const email = user?.emailAddresses?.[0]?.emailAddress;
   let priceId: string | null = null;
   if (email) {
@@ -23,7 +23,7 @@ export default async function PlanBadge() {
     planName = plan.name;
   }
   return (
-    <Badge variant="outline" className={cn('ml-2 bg-linear-to-r from-amber-100 to-amber-200 border-amber-300 hidden lg:flex flex-row items-center')}>
+    <Badge variant="outline" className={cn('ml-2 bg-linear-to-r from-amber-100 to-amber-200 border-amber-300 hidden lg:flex flex-row items-center',!priceId && 'from-rose-100 to-red-200 border-red-300')}>
       <Crown
         className={cn(
           "w-3 h-3 mr-1 text-amber-600",
