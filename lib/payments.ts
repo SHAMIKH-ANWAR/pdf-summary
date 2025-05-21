@@ -64,6 +64,8 @@ export async function handlePaymentSuccess(payment: any) {
   let amount = payment.amount;
   amount = amount / 100; // Convert to original amount
   const status = payment.status;
+  const userId = payment.customer_id;
+  const userEmail = payment.email;
   
 
 }
