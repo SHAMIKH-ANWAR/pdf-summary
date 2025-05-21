@@ -14,14 +14,24 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { planId } = body;
     const { userId } = await auth();
-    
+    if(!userId) {
+      return NextResponse.json({ error: "User not authenticated" }, { status: 401 });
+    }
+     const user = await fetch(`https://api.clerk.dev/v1/users/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${process.env.CLERK_SECRET_KEY}`,
+      },
+    }).then(res => res.json());
+
+    const userEmail = user.email_addresses?.[0]?.email_address;
 
     const subscription = await razorpay.subscriptions.create({
       plan_id: planId,
       total_count: 12, // or 1 for yearly
       customer_notify: 1,
       notes: {
-        userEmail: "user@example.com", // Replace with actual user info if logged in
+        userEmail: userEmail || "user@example.com",
+        userId,
       },
     });
 
