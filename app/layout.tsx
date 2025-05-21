@@ -7,6 +7,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { getPriceIdForActiveUser } from "@/lib/user";
 import { currentUser } from "@clerk/nextjs/server";
 import { pricingPlans } from "@/utils/constants";
+import { HeaderContainer } from "@/components/common/header-container";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,35 +29,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const user = await currentUser();
-
-  if (!user?.id) {
-    // Pass null values to indicate no user is logged in
-    return <Header userPlanData={null} />;
-  }
-
-  const email = user?.emailAddresses?.[0]?.emailAddress;
-  let priceId: string | null = null;
-  let planName = "Buy a plan";
-  let status: string | null = null;
-
-  if (email) {
-    const result = await getPriceIdForActiveUser(email);
-    priceId = result?.price_id ?? null;
-    status = result?.status ?? null;
-
-    if (result?.status === "cancelled") {
-      planName = "Buy a plan";
-    } else {
-      const plan = pricingPlans.find((plan) => plan.priceId === priceId);
-      if (plan) {
-        planName = plan.name;
-      }
-    }
-  }
-
-  console.log("User Plan Data:", { priceId, planName, status });
-  // Pass the user plan data to the client component
   return (
     <ClerkProvider>
       <html lang="en">
@@ -64,13 +36,7 @@ export default async function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <div className=" relative flex flex-col min-h-screen">
-            <Header
-              userPlanData={{
-                priceId,
-                planName,
-                status,
-              }}
-            />
+            <HeaderContainer/>
             <main className="flex-1">{children}</main>
             <Footer />
           </div>
