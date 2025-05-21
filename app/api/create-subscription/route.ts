@@ -23,6 +23,8 @@ export async function POST(req: NextRequest) {
       },
     }).then(res => res.json());
 
+    console.log("User data:", user);
+
     const userEmail = user.email_addresses?.[0]?.email_address;
 
     const subscription = await razorpay.subscriptions.create({
