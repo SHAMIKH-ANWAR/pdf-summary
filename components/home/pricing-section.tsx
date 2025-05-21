@@ -34,12 +34,12 @@ const plans:PriceType[] = [
     }
 ];
 
-const handleSubscribe = async (planId: string) => {
+const handleSubscribe = async () => {
     try {
       const res = await fetch("/api/create-subscription", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ planId: planId }),
+        body: JSON.stringify({ planId: priceId }),
       });
 
       const data = await res.json();
