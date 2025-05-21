@@ -62,7 +62,7 @@ async function createOrUpdateUser({
 export async function handlePaymentSuccess(payment: any) {
   const id = payment.id;
   let amount = payment.amount;
-  amount = amount / 100; // Convert to original amount
+  amount = amount / 100;
   const status = payment.status;
   const userId = payment.customer_id;
   const userEmail = payment.email;
@@ -75,7 +75,7 @@ export async function handlePaymentSuccess(payment: any) {
   }
 
   const sql = await getDbConnection();
-  await sql`INSERT INTO payments (payment_id, user_id, amount, status, price_id, user_email)
-            VALUES (${id}, ${userId}, ${amount}, ${status}, ${priceId}, ${userEmail})`;
+  await sql`INSERT INTO payments (user_id, amount, status, price_id, user_email)
+            VALUES ( ${userId}, ${amount}, ${status}, ${priceId}, ${userEmail})`;
 
 }
