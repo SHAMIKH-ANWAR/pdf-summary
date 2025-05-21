@@ -34,7 +34,10 @@ const plans:PriceType[] = [
     }
 ];
 
-const handleSubscribe = async () => {
+
+
+const PricingCard = ({name,price,description,items,id,paymentLink,priceId}:PriceType)=>{
+    const handleSubscribe = async () => {
     try {
       const res = await fetch("/api/create-subscription", {
         method: "POST",
@@ -53,8 +56,6 @@ const handleSubscribe = async () => {
       alert("Something went wrong.");
     }
   };
-
-const PricingCard = ({name,price,description,items,id,paymentLink,priceId}:PriceType)=>{
     return(
         <div className="relative w-full max-w-lg hover:scale-105 hover:transition-all hover:duration-300">
             <div className={cn("relative flex-col  flex gap-4 lg:gap-8 z-10 p-8  border-[1px] border-gray-500/20 rounded-2xl ",
@@ -82,7 +83,7 @@ const PricingCard = ({name,price,description,items,id,paymentLink,priceId}:Price
                 ))}
             </div>
             <div className="space-y-2 flex justify-center w-full">
-                <Button className={cn("w-full rounded-full flex items-center justify-center gap-2 bg-linear-to-r from=rose-800 to-rose-500 hover:from-rose-500 hover:to-rose-800 text-white border-2 py-2",
+                <Button onClick={handleSubscribe} className={cn("w-full rounded-full flex items-center justify-center gap-2 bg-linear-to-r from=rose-800 to-rose-500 hover:from-rose-500 hover:to-rose-800 text-white border-2 py-2",
                     id === 'pro' ? 'bg-rose-900 border-rose-100' : 'bg-rose-500 border-rose-500'
                 )}>Buy Now <ArrowRight size={18}/></Button>
             </div>

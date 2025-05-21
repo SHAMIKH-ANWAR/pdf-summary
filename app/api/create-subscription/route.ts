@@ -1,5 +1,7 @@
-import Razorpay from 'razorpay';
-import { NextRequest, NextResponse } from 'next/server';
+// app/api/create-subscription/route.ts
+
+import { NextRequest, NextResponse } from "next/server";
+import Razorpay from "razorpay";
 
 const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID!,
@@ -7,22 +9,22 @@ const razorpay = new Razorpay({
 });
 
 export async function POST(req: NextRequest) {
-  const { planId } = await req.json();
-
   try {
+    const body = await req.json();
+    const { planId } = body;
+
     const subscription = await razorpay.subscriptions.create({
       plan_id: planId,
-      customer_notify: 1,
       total_count: 12, // or 1 for yearly
+      customer_notify: 1,
       notes: {
-        email: 'user@example.com', // replace with real user data
-        name: 'User Name',
+        userEmail: "user@example.com", // Replace with actual user info if logged in
       },
     });
 
     return NextResponse.json({ short_url: subscription.short_url });
   } catch (err) {
-    console.error('Subscription creation failed:', err);
-    return NextResponse.json({ error: 'Subscription creation failed' }, { status: 500 });
+    console.error("Error creating subscription", err);
+    return NextResponse.json({ error: "Subscription failed" }, { status: 500 });
   }
 }
