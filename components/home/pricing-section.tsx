@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils"
-import Link from "next/link"
+// import Link from "next/link"
 import { ArrowRight, CheckIcon } from "lucide-react"
 import { Button } from "../ui/button"
 
@@ -34,12 +34,12 @@ const plans:PriceType[] = [
     }
 ];
 
-const handleSubscribe = async (priceId) => {
+const handleSubscribe = async () => {
     try {
       const res = await fetch("/api/create-subscription", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ planId: priceId }),
+        body: JSON.stringify({ planId: }),
       });
 
       const data = await res.json();
@@ -82,7 +82,7 @@ const PricingCard = ({name,price,description,items,id,paymentLink,priceId}:Price
                 ))}
             </div>
             <div className="space-y-2 flex justify-center w-full">
-                <Button onClick={handleSubscribe()}className={cn("w-full rounded-full flex items-center justify-center gap-2 bg-linear-to-r from=rose-800 to-rose-500 hover:from-rose-500 hover:to-rose-800 text-white border-2 py-2",
+                <Button className={cn("w-full rounded-full flex items-center justify-center gap-2 bg-linear-to-r from=rose-800 to-rose-500 hover:from-rose-500 hover:to-rose-800 text-white border-2 py-2",
                     id === 'pro' ? 'bg-rose-900 border-rose-100' : 'bg-rose-500 border-rose-500'
                 )}>Buy Now <ArrowRight size={18}/></Button>
             </div>
