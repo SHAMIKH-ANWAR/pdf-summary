@@ -20,7 +20,7 @@ const Header = () => {
       </div>
 
       {/* Desktop Navigation */}
-      <div className="hidden md:flex lg:justify-center gap-4 lg:gap-12 lg:items-center">
+      <div className="hidden md:flex lg:justify-center gap-4 lg:gap-12 lg:items-center ">
         <Link href="/#pricing" className="text-sm lg:text-base hover:text-gray-600 transition-colors">
           Pricing
         </Link>
@@ -50,7 +50,7 @@ const Header = () => {
       </div>
 
       {/* Mobile Menu Button */}
-      <div className="md:hidden">
+      <div className="md:hidden flex items-center justify-center">
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
             <button className="p-2 rounded-md hover:bg-gray-100 transition-colors" aria-label="Toggle menu">
