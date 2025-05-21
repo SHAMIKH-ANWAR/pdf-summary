@@ -7,27 +7,27 @@ import { cn } from "@/lib/utils";
 import { Crown } from "lucide-react";
 
 export default async function PlanBadge() {
-  const user = await currentUser();
-  if (!user?.id) {
-    return null;
-  }
-  //   console.log(user);
-  const email = user?.emailAddresses?.[0]?.emailAddress;
-  let priceId: string | null = null;
-  let planName = "Buy a plan";
-  const result = await getPriceIdForActiveUser(email);
-  if (email) {
-    priceId = result?.price_id ?? null;
-  }
+  // const user = await currentUser();
+  // if (!user?.id) {
+  //   return null;
+  // }
+  // //   console.log(user);
+  // const email = user?.emailAddresses?.[0]?.emailAddress;
+  // let priceId: string | null = null;
+  // let planName = "Buy a plan";
+  // const result = await getPriceIdForActiveUser(email);
+  // if (email) {
+  //   priceId = result?.price_id ?? null;
+  // }
 
-  if (result?.status === "cancelled") {
-    planName = "Buy a plan";
-  }
-  const plan = pricingPlans.find((plan) => plan.priceId === priceId);
+  // if (result?.status === "cancelled") {
+  //   planName = "Buy a plan";
+  // }
+  // const plan = pricingPlans.find((plan) => plan.priceId === priceId);
 
-  if (plan && result?.status !== "cancelled") {
-    planName = plan.name;
-  }
+  // if (plan && result?.status !== "cancelled") {
+  //   planName = plan.name;
+  // }
   return (
     <Badge
       variant="outline"
