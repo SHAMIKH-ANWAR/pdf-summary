@@ -52,7 +52,7 @@ export const POST = async (req: NextRequest) => {
 
       case 'subscription.cancelled':
         console.log('🛑 Subscription cancelled:', event.payload.subscription.entity);
-        handleSubscriptionCancelled(event.payload.subscription.entity);
+        await handleSubscriptionCancelled(event.payload.subscription.entity);
         // Revoke access, notify user
         break;
 
