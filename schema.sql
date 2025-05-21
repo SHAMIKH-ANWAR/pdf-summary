@@ -27,7 +27,6 @@ CREATE TABLE pdf_summaries (
 CREATE TABLE payments (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     amount INTEGER NOT NULL,
-    status VARCHAR(50) NOT NULL,
     razorpay_payment_id VARCHAR(255) UNIQUE NOT NULL,
     user_id VARCHAR(255) NOT NULL,
     price_id VARCHAR(255) NOT NULL,

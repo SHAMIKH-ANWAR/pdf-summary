@@ -63,18 +63,32 @@ export async function handlePaymentSuccess(payment: any) {
   const id = payment.id;
   let amount = payment.amount;
   amount = amount / 100;
-  const status = payment.status;
+
+  const status = payment.status || 'paid'; // default fallback
   const userId = payment.customer_id;
   const userEmail = payment.email;
-  let priceId;
-  // const razorpayPaymentId = payment.order_id;
-  if(amount === 20){
-    priceId = 'plan_QX9EV669OhB0L7'
-  }else{
-    priceId = 'plan_QX9HPNX2i0freE'
-  }
+  const priceId = amount === 20
+    ? 'plan_QX9EV669OhB0L7'
+    : 'plan_QX9HPNX2i0freE';
 
   const sql = await getDbConnection();
-  await sql`INSERT INTO payments (user_id, amount, status, price_id, user_email,razorpay_payment_id)
-            VALUES ( ${userId}, ${amount}, ${status}, ${priceId}, ${userEmail},${id})`;
+
+  await sql`
+    INSERT INTO payments (
+      user_id,
+      amount,
+      status,
+      price_id,
+      user_email,
+      razorpay_payment_id
+    )
+    VALUES (
+      ${userId},
+      ${amount},
+      ${status},
+      ${priceId},
+      ${userEmail},
+      ${id}
+    )
+  `;
 }
