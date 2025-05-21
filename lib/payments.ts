@@ -58,3 +58,21 @@ async function createOrUpdateUser({
     console.error('Error creating/updating user', error);
   }
 }
+
+export async function handlePaymentSuccess(payment: any) {
+  const customerId = payment.customer_id;
+  const planId = payment.plan_id;
+  const email = payment.notes?.userEmail || ''; // Ensure email is collected earlier
+  const fullName = payment.notes?.name || '';
+
+  if (email && planId) {
+    console.log('Creating/updating user in DB');
+    await createOrUpdateUser({
+      email,
+      fullName,
+      customerId,
+      planId,
+      status: 'active',
+    });
+  }
+}

@@ -23,7 +23,8 @@ export async function POST(req: NextRequest) {
       },
     }).then(res => res.json());
 
-    console.log("User data:", user);
+    const firstName = user.first_name || "";
+    const lastName = user.last_name || "";
 
     const userEmail = user.email_addresses?.[0]?.email_address;
 
@@ -34,6 +35,7 @@ export async function POST(req: NextRequest) {
       notes: {
         userEmail: userEmail || "user@example.com",
         userId,
+        name: `${firstName}  ${lastName}`,
       },
     });
 
