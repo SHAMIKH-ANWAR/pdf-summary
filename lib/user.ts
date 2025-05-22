@@ -31,15 +31,23 @@ export async function hasReachedUploadLimit(userId: string) {
   const uploadCount = await getUserUploadCount(userId);
   const priceInfo = await getPriceIdForActiveUserByUserId(userId);
   console.log("priceInfo", priceInfo);
-  const isPro =
-    pricingPlans.find((plan) => plan.priceId === priceInfo?.price_id)?.id ===
-    "pro";
-  console.log("isPro", isPro);
-  const isBasic =
-    pricingPlans.find((plan) => plan.priceId === priceInfo?.price_id)?.id === "basic"
-  const uploadLimit: number = isPro ? 1000 : 5;
-  return { hasReachedLimit: uploadCount >= uploadLimit, uploadLimit };
+
+  // If user has no active subscription
+  if (!priceInfo || !priceInfo.price_id) {
+    console.warn("No active subscription found. Blocking uploads.");
+    return { hasReachedLimit: true, uploadLimit: 0 };
+  }
+
+  // Determine if the user is on 'pro' or 'basic'
+  const userPlan = pricingPlans.find((plan) => plan.priceId === priceInfo.price_id);
+  const uploadLimit = userPlan?.id === "pro" ? 1000 : 5;
+
+  return {
+    hasReachedLimit: uploadCount >= uploadLimit,
+    uploadLimit,
+  };
 }
+
 
 export async function getSubscriptionStatus(user: any) {
   const hasSubscription = await hasActivePlan(
