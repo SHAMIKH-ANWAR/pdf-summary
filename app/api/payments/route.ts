@@ -22,7 +22,8 @@ export const POST = async (req: NextRequest) => {
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
   }
 
-  const userId = await currentUser();
+  const user = await currentUser();
+  const userId = user?.id;
   console.log("userId", userId);
   if (!userId) {
     console.error("⚠️ User not found!");
