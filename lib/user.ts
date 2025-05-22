@@ -7,3 +7,4 @@ export async function getPriceIdForActiveUser(email:string){
     console.log('query',query);
     return { price_id: query?.[0]?.price_id, status: query?.[0]?.status };
 }
+
