@@ -23,6 +23,7 @@ export const POST = async (req: NextRequest) => {
   }
 
   const userId = await currentUser();
+  console.log("userId", userId);
   if (!userId) {
     console.error("⚠️ User not found!");
     return NextResponse.json({ error: "User not found" }, { status: 400 });
