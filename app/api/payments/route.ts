@@ -22,14 +22,8 @@ export const POST = async (req: NextRequest) => {
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
   }
 
-  const user = await currentUser();
-  console.log("user", user);
-  const userId = user?.id;
-  console.log("userId", userId);
-  if (!userId) {
-    console.error("⚠️ User not found!");
-    return NextResponse.json({ error: "User not found" }, { status: 400 });
-  }
+
+
 
   const event = JSON.parse(body);
 
@@ -56,7 +50,7 @@ export const POST = async (req: NextRequest) => {
         );
         // const {notes,id} = event.payload.subscription.entity;
         // const userEmail = notes.userEmail;
-        await handleSubscriptionActivated(event.payload.subscription.entity,userId);
+        await handleSubscriptionActivated(event.payload.subscription.entity);
         break;
 
       case "subscription.pending":

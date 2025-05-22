@@ -1,6 +1,10 @@
+import { currentUser } from '@clerk/nextjs/server';
 import { getDbConnection } from './db';
 
-export async function handleSubscriptionActivated(subscription: any, userId: any) {
+export async function handleSubscriptionActivated(subscription: any) {
+    const user = await currentUser();
+    console.log('user', user);
+  const userId = user?.id ?? '';
   const customerId = subscription?.customer_id;
   const planId = subscription?.plan_id;
   const email = subscription.notes?.userEmail || ''; // Ensure email is collected earlier
