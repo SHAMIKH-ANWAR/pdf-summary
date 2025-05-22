@@ -19,7 +19,7 @@ export async function getPriceIdForActiveUserByUserId(userId: string) {
   return { price_id: query?.[0]?.price_id, status: query?.[0]?.status };
 }
 
-async function hasActivePlan(email: string) {
+export async function hasActivePlan(email: string) {
   const sql = await getDbConnection();
   const query =
     await sql`SELECT price_id,status FROM users WHERE email = ${email} AND status = 'active' AND price_id IS NOT NULL`;
