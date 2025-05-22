@@ -8,3 +8,7 @@ export async function getPriceIdForActiveUser(email:string){
     return { price_id: query?.[0]?.price_id, status: query?.[0]?.status };
 }
 
+export async function hasReachedUploadLimit(userId:string){
+    const uploadCount = await getUserUploadCount(userId);
+    const uploadLimit = isPro ? 1000 : 5;
+}
