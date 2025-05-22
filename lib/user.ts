@@ -35,9 +35,11 @@ export async function hasReachedUploadLimit(userId: string) {
     pricingPlans.find((plan) => plan.priceId === priceInfo?.price_id)?.id ===
     "pro";
   console.log("isPro", isPro);
-  
+  const isBasic =
+    pricingPlans.find((plan) => plan.priceId === priceInfo?.price_id)?.id === "basic"
   const uploadLimit: number = isPro ? 1000 : 5;
-  return { hasReachedLimit: uploadCount >= uploadLimit, uploadLimit };
+  console.log()
+  return { , uploadLimit };
 }
 
 export async function getSubscriptionStatus(user: any) {
