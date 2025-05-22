@@ -23,6 +23,7 @@ export const POST = async (req: NextRequest) => {
   }
 
   const user = await currentUser();
+  console.log("user", user);
   const userId = user?.id;
   console.log("userId", userId);
   if (!userId) {
