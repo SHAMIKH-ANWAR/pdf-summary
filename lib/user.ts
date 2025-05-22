@@ -42,3 +42,4 @@ export async function getSubscriptionStatus(user: User) {
   );
   return hasSubscription;
 }
+ 
