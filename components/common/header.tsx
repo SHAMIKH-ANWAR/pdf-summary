@@ -62,8 +62,8 @@ const Header = ({ userPlanData }: { userPlanData: UserPlanData }) => {
       <div className="md:hidden">
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
-            <button className="p-2 rounded-md hover:bg-rose-100 transition-colors" aria-label="Toggle menu">
-              <Menu className="h-6 w-6 text-rose-600" />
+            <button className="p-2 rounded-md " aria-label="Toggle menu">
+              <Menu className="h-6 w-6" />
             </button>
           </SheetTrigger>
           <SheetContent
