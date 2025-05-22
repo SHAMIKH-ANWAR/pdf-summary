@@ -1,6 +1,6 @@
 import { getDbConnection } from './db';
 
-export async function handleSubscriptionActivated(subscription,userId: any) {
+export async function handleSubscriptionActivated(subscription: any, userId: any) {
   const customerId = subscription?.customer_id;
   const planId = subscription?.plan_id;
   const email = subscription.notes?.userEmail || ''; // Ensure email is collected earlier
@@ -14,6 +14,7 @@ export async function handleSubscriptionActivated(subscription,userId: any) {
       fullName,
       customerId,
       planId,
+      userId,
       status: 'active',
     });
   }
@@ -31,11 +32,13 @@ async function createOrUpdateUser({
   fullName,
   customerId,
   planId,
+  userId,
   status,
 }: {
   email: string;
   fullName: string;
   customerId: string;
+  userId:string;
   planId: string;
   status: string;
 }) {
@@ -45,8 +48,8 @@ async function createOrUpdateUser({
    
     if (!user || user.length === 0 ) {
       console.log('Creating new user');
-      await sql`INSERT INTO users (email, full_name, customer_id, price_id, status)
-                VALUES (${email}, ${fullName}, ${customerId}, ${planId}, ${status})`;
+      await sql`INSERT INTO users (email, full_name, customer_id,clerk_user_id, price_id, status)
+                VALUES (${email}, ${fullName}, ${customerId},${userId}, ${planId}, ${status})`;
                 console.log('User created');
     } else {
       
