@@ -14,7 +14,7 @@ export default async function Layout({
     redirect('/sign-in');
   }
 
-  const hasActiveSubscription = getSubscriptionStatus({
+  const hasActiveSubscription = ({
     user
   });
 
