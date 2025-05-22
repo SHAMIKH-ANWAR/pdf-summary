@@ -11,6 +11,13 @@ export async function getPriceIdForActiveUser(email:string){
     return { price_id: query?.[0]?.price_id, status: query?.[0]?.status };
 }
 
+export async function getPriceIdForActiveUserByUserId(userId:string){
+    const sql = await getDbConnection();
+    const query = await sql`SELECT price_id,status  FROM users WHERE id = ${userId}`;
+    console.log('query',query);
+    return { price_id: query?.[0]?.price_id, status: query?.[0]?.status };
+}
+
 async function hasActivePlan(email:string){
     const sql = await getDbConnection();
     const query = await sql`SELECT price_id,status FROM users WHERE email = ${email} AND status = 'active' AND price_id IS NOT NULL`;
@@ -19,7 +26,7 @@ async function hasActivePlan(email:string){
 
 export async function hasReachedUploadLimit(userId:string){
     const uploadCount = await getUserUploadCount(userId);
-    const priceInfo = await getPriceIdForActiveUser(userId);
+    const priceInfo = await getPriceIdForActiveUserByUserId(userId);
     const isPro = pricingPlans.find((plan)=>plan.priceId === priceInfo?.price_id)?.id === "pro";
     const uploadLimit:number = isPro ? 1000 : 5;
     return {hasReachedLimit: uploadCount>= uploadLimit, uploadLimit};
