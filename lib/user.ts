@@ -30,7 +30,7 @@ export async function hasActivePlan(email: string) {
 export async function hasReachedUploadLimit(userId: string) {
   const uploadCount = await getUserUploadCount(userId);
   const priceInfo = await getPriceIdForActiveUserByUserId(userId);
-  console.log("priceInfo", priceInfo);
+  // console.log("priceInfo", priceInfo);
 
   // If user has no active subscription
   if (!priceInfo || !priceInfo.price_id) {
