@@ -5,6 +5,7 @@ import {
   handleSubscriptionActivated,
   handleSubscriptionCancelled,
 } from "@/lib/payments";
+import { currentUser } from "@clerk/nextjs/server";
 
 export const POST = async (req: NextRequest) => {
   const webhookSecret = process.env.RAZORPAY_WEBHOOK_SECRET!;
@@ -19,6 +20,12 @@ export const POST = async (req: NextRequest) => {
   if (expectedSignature !== signature) {
     console.error("⚠️ Signature verification failed!");
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
+  }
+
+  const userId = await currentUser();
+  if (!userId) {
+    console.error("⚠️ User not found!");
+    return NextResponse.json({ error: "User not found" }, { status: 400 });
   }
 
   const event = JSON.parse(body);
@@ -46,7 +53,7 @@ export const POST = async (req: NextRequest) => {
         );
         // const {notes,id} = event.payload.subscription.entity;
         // const userEmail = notes.userEmail;
-        await handleSubscriptionActivated(event.payload.subscription.entity);
+        await handleSubscriptionActivated(event.payload.subscription.entity,userId);
         break;
 
       case "subscription.pending":

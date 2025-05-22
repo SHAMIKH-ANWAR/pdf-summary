@@ -1,6 +1,6 @@
 import { getDbConnection } from './db';
 
-export async function handleSubscriptionActivated(subscription: any) {
+export async function handleSubscriptionActivated(subscription,userId: any) {
   const customerId = subscription?.customer_id;
   const planId = subscription?.plan_id;
   const email = subscription.notes?.userEmail || ''; // Ensure email is collected earlier
