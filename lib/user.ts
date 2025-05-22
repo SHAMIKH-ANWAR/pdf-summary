@@ -15,7 +15,7 @@ export async function getPriceIdForActiveUserByUserId(userId: string) {
   const sql = await getDbConnection();
   const query =
     await sql`SELECT price_id, status FROM users WHERE clerk_user_id = ${userId}`;
-  // console.log("query", query);
+  console.log("query", query);
   return { price_id: query?.[0]?.price_id, status: query?.[0]?.status };
 }
 
@@ -29,8 +29,9 @@ export async function hasActivePlan(email: string) {
 
 export async function hasReachedUploadLimit(userId: string) {
   const uploadCount = await getUserUploadCount(userId);
+  console.log("uploadCount", uploadCount);
   const priceInfo = await getPriceIdForActiveUserByUserId(userId);
-  // console.log("priceInfo", priceInfo);
+  console.log("priceInfo", priceInfo);
 
   // If user has no active subscription
   if (!priceInfo || !priceInfo.price_id) {
