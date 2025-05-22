@@ -30,9 +30,12 @@ export async function hasActivePlan(email: string) {
 export async function hasReachedUploadLimit(userId: string) {
   const uploadCount = await getUserUploadCount(userId);
   const priceInfo = await getPriceIdForActiveUserByUserId(userId);
+  console.log("priceInfo", priceInfo);
   const isPro =
     pricingPlans.find((plan) => plan.priceId === priceInfo?.price_id)?.id ===
     "pro";
+  console.log("isPro", isPro);
+  
   const uploadLimit: number = isPro ? 1000 : 5;
   return { hasReachedLimit: uploadCount >= uploadLimit, uploadLimit };
 }
