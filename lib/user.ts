@@ -1,3 +1,4 @@
+import { pricingPlans } from "@/utils/constants";
 import { getDbConnection } from "./db";
 
 
@@ -10,5 +11,7 @@ export async function getPriceIdForActiveUser(email:string){
 
 export async function hasReachedUploadLimit(userId:string){
     const uploadCount = await getUserUploadCount(userId);
+    const priceInfo = await getPriceIdForActiveUser(userId);
+    const plan = pricingPlans.find((plan)=>plan.priceId === priceInfo?.price_id);
     const uploadLimit = isPro ? 1000 : 5;
 }
