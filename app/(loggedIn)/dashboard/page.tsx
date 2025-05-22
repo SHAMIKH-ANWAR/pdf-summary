@@ -3,18 +3,20 @@ import EmptySummaryState from "@/components/summaries/empty-summary-state";
 import SummaryCard from "@/components/summaries/summary-card";
 import { Button } from "@/components/ui/button";
 import { getSummaries } from "@/lib/summaries";
+import { hasReachedUploadLimit } from "@/lib/user";
 import { currentUser } from "@clerk/nextjs/server";
 import { ArrowRight, Plus } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export default async function DashboardPage() {
-  const uploadLimit = 5;
+  // const uploadLimit = 5;
   const user = await currentUser();
   const userId = user?.id;
   if (!userId) {
     return redirect("/sign-in");
   }
+  const {hasReachedLimit,uploadLimit} = await hasReachedUploadLimit(userId);
   const summaries = await getSummaries(userId); // Replace 'userId' with actual user ID
   return (
     <main className="min-h-screen">
