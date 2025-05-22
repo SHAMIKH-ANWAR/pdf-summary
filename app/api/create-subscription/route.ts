@@ -36,6 +36,7 @@ export async function POST(req: NextRequest) {
         userEmail: userEmail || "user@example.com",
         userId,
         name: `${firstName}  ${lastName}`,
+        clerkUserId:user.id
       },
     });
 
