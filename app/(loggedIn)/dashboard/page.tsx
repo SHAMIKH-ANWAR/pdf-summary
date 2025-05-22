@@ -32,7 +32,7 @@ export default async function DashboardPage() {
                 Transform your PDFs into concise, actionable insights
               </p>
             </div>
-            <Button
+            {!hasReachedLimit && (<Button
               variant={"link"}
               className="bg-linear-to-r from-rose-500 to-rose-700 hover:from-rose-600 hover:to-rose-800 hover:scale-105 transition-all duration-300 group hover:no-underline"
               asChild
@@ -41,9 +41,9 @@ export default async function DashboardPage() {
                 <Plus className="w-5 h-5" />
                 New Summary
               </Link>
-            </Button>
+            </Button>)}
           </div>
-          <div className="mb-6">
+          {hasReachedLimit && (<div className="mb-6">
             <div className="bg-rose-50 border border-rose-200 rounded-lg p-4 text-rose-800">
               <p className="text-sm">
                 You've reached the limit of {uploadLimit} uploads on the Basic
@@ -58,7 +58,7 @@ export default async function DashboardPage() {
                 for unlimited uploads.
               </p>
             </div>
-          </div>
+          </div>)}
           {summaries.length === 0 ? (
             <EmptySummaryState />
           ) : (
