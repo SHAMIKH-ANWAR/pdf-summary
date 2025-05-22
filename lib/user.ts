@@ -11,6 +11,12 @@ export async function getPriceIdForActiveUser(email:string){
     return { price_id: query?.[0]?.price_id, status: query?.[0]?.status };
 }
 
+async function hasActivePlan(email:string){
+    const sql = await getDbConnection();
+    const query = await sql`SELECT price_id,status FROM users WHERE email = ${email} AND status = 'active' AND price_id IS NOT NULL`;
+    return query?.[0]?.price_id !== null;
+}
+
 export async function hasReachedUploadLimit(userId:string){
     const uploadCount = await getUserUploadCount(userId);
     const priceInfo = await getPriceIdForActiveUser(userId);
@@ -20,5 +26,6 @@ export async function hasReachedUploadLimit(userId:string){
 }
 
 export async function getSubscriptionStatus(user:User){
-    const hasSubscription = await getPriceIdForActiveUser(user.emailAddresses[0].emailAddress);
+    const hasSubscription = await hasActivePlan(user.emailAddresses[0].emailAddress);
+    return hasSubscription;
 }
