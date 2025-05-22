@@ -1,3 +1,4 @@
+import { UpgradeRequired } from "@/components/common/upgrade-required";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
