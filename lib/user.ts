@@ -7,7 +7,7 @@ export async function getPriceIdForActiveUser(email: string) {
   const sql = await getDbConnection();
   const query =
     await sql`SELECT price_id,status  FROM users WHERE email = ${email}`;
-  console.log("query", query);
+  // console.log("query", query);
   return { price_id: query?.[0]?.price_id, status: query?.[0]?.status };
 }
 
@@ -15,7 +15,7 @@ export async function getPriceIdForActiveUserByUserId(userId: string) {
   const sql = await getDbConnection();
   const query =
     await sql`SELECT price_id, status FROM users WHERE clerk_user_id = ${userId}`;
-  console.log("query", query);
+  // console.log("query", query);
   return { price_id: query?.[0]?.price_id, status: query?.[0]?.status };
 }
 
