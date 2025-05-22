@@ -1,4 +1,5 @@
 import { UpgradeRequired } from "@/components/common/upgrade-required";
+import { getSubscriptionStatus } from "@/lib/user";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
