@@ -1,6 +1,12 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { currentUser } from "@clerk/nextjs/server"
+import Razorpay from "razorpay"
 
+
+const razorpay = new Razorpay({
+    key_id: process.env.RAZORPAY_KEY_ID || "",
+    key_secret: process.env.RAZORPAY_SECRET_KEY || "",
+})
 export async function POST(request: NextRequest) {
   try {
     const user = await currentUser()
@@ -11,6 +17,7 @@ export async function POST(request: NextRequest) {
 
     const { priceId } = await request.json()
 
+    console.log("request",request.body);
     
 
     console.log("Cancelling subscription for user:", user.id, "priceId:", priceId)
