@@ -15,11 +15,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
-    const { priceId } = await request.json()
+    const { priceId,subscriptionId } = await request.json();
+    console.log("priceId", priceId);
+    console.log("subscriptionId", subscriptionId);
     if (!priceId) {
       return NextResponse.json({ error: "Price ID is required" }, { status: 400 })
     }
-    const {subscriptionId} = await request.json();
+    // const {subscriptionId} = await request.json();
 
     const result = await razorpay.subscriptions.cancel(subscriptionId);
     if (result.status !== "cancelled") {

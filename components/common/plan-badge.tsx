@@ -131,8 +131,7 @@ export default function PlanBadge({
           <AlertDialogHeader>
             <AlertDialogTitle>Are you sure you want to cancel?</AlertDialogTitle>
             <AlertDialogDescription>
-              This action will cancel your subscription. You'll lose access to premium features at the end of your
-              current billing period. This action cannot be undone.
+              This action will cancel your subscription. You'll lose access to premium features from now. This action cannot be undone.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
