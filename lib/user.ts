@@ -15,7 +15,7 @@ export async function getRazorpaySubscriptionIdForActiveUser(userId: string) {
   const sql = await getDbConnection();
   const query =
     await sql`SELECT razorpay_payment_id FROM payments WHERE user_id = ${userId}`;
-  console.log("query", query?.[0]?.razorpay_payment_id);
+  // console.log("query", query?.[0]?.razorpay_payment_id);
   // console.log("razorpay_payment_id", query?.[0]?.razorpay_payment_id);
   return query?.[0]?.razorpay_payment_id;
 }
