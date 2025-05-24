@@ -5,7 +5,7 @@ import {
   // handleSubscriptionActivated,
   handleSubscriptionCancelled,
 } from "@/lib/payments";
-import { currentUser } from "@clerk/nextjs/server";
+// import { currentUser } from "@clerk/nextjs/server";
 
 export const POST = async (req: NextRequest) => {
   const webhookSecret = process.env.RAZORPAY_WEBHOOK_SECRET!;
