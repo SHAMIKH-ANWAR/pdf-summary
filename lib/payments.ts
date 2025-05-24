@@ -72,13 +72,25 @@ export async function handlePaymentSuccess(payment: any) {
   amount = amount / 100;
 
   const status = payment.status || 'paid'; // default fallback
-  const userId = payment.customer_id;
+  const RazorpayCustomerId = payment.customer_id;
   const userEmail = payment.email;
   const priceId = amount === 20
     ? 'plan_QX9EV669OhB0L7'
     : 'plan_QX9HPNX2i0freE';
+    const ClerkUserId = payment.notes?.clerkUserId || '';
+    console.log('ClerkUserId recieved in payments.ts', ClerkUserId);
 
   const sql = await getDbConnection();
+
+  const existingUser = await sql `SELECT * FROM users WHERE email = ${userEmail}`;
+
+  if( !existingUser || existingUser.length === 0) {
+    console.log('Creating new user for payment');
+    await sql`
+      INSERT INTO users (email, full_name, customer_id, clerk_user_id, price_id, status)
+      VALUES (${userEmail}, ${payment.notes?.name || 'Unknown'}, ${RazorpayCustomerId}, ${ClerkUserId}, ${priceId}, 'active')
+    `;
+  }
 
   await sql`
     INSERT INTO payments (
