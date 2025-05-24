@@ -19,12 +19,18 @@ export async function POST(request: NextRequest) {
     if (!priceId) {
       return NextResponse.json({ error: "Price ID is required" }, { status: 400 })
     }
-    
+    const {subscriptionId} = await request.json();
+
+    const result = await razorpay.subscriptions.cancel(subscriptionId);
+    if (result.status !== "cancelled") {
+      return NextResponse.json({ error: "Failed to cancel subscription" }, { status: 500 })
+    }
+
 
     console.log("request",request.body);
     
 
-    console.log("Cancelling subscription for user:", user.id, "priceId:", priceId)
+    console.log("Cancelling subscription for user:", user.id, "priceId:", priceId, "subscriptionId:", subscriptionId)
 
     // For now, just return success
     // Replace this with your actual cancellation logic
