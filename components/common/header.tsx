@@ -17,7 +17,7 @@ type UserPlanData = {
 
 const Header = ({ userPlanData }: { userPlanData: UserPlanData }) => {
   const [isOpen, setIsOpen] = useState(false)
-
+  console.log("Subscriptionn id in Header:", userPlanData?.subscriptionId)
   return (
     <nav className="container flex items-center justify-between py-4 px-2 lg:px-8 mx-auto">
       <div className="flex lg:flex-1">
@@ -47,7 +47,7 @@ const Header = ({ userPlanData }: { userPlanData: UserPlanData }) => {
               Upload a PDF
             </Link>
             {userPlanData && (
-              <PlanBadge priceId={userPlanData.priceId} planName={userPlanData.planName} status={userPlanData.status} />
+              <PlanBadge subscriptionId={userPlanData?.subscriptionId} priceId={userPlanData.priceId} planName={userPlanData.planName} status={userPlanData.status} />
             )}
             <UserButton />
           </div>

@@ -22,7 +22,7 @@ export async function HeaderContainer() {
   if (email) {
     const result = await getPriceIdForActiveUser(email);
      subscriptionId = await getRazorpaySubscriptionIdForActiveUser(user?.id);
-    //  console.log("subscriptionId", subscriptionId);
+     console.log("subscriptionId", subscriptionId);
     priceId = result?.price_id ?? null
     status = result?.status ?? null
 
