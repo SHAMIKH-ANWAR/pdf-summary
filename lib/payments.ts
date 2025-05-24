@@ -67,6 +67,7 @@ async function createOrUpdateUser({
 
 export async function handlePaymentSuccess(payment: any) {
   const id = payment.id;
+  
   let amount = payment.amount;
   amount = amount / 100;
 

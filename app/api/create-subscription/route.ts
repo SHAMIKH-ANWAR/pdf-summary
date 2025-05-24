@@ -14,6 +14,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { planId } = body;
     const { userId } = await auth();
+    console.log("Clerk user ID:", userId);
     if(!userId) {
       return NextResponse.json({ error: "User not authenticated" }, { status: 401 });
     }
