@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
 import {
   handlePaymentSuccess,
-  handleSubscriptionActivated,
+  // handleSubscriptionActivated,
   handleSubscriptionCancelled,
 } from "@/lib/payments";
 import { currentUser } from "@clerk/nextjs/server";
@@ -48,9 +48,7 @@ export const POST = async (req: NextRequest) => {
           "🚀 Subscription activated:",
           event.payload.subscription.entity
         );
-        // const {notes,id} = event.payload.subscription.entity;
-        // const userEmail = notes.userEmail;
-        await handleSubscriptionActivated(event.payload.subscription.entity);
+        // await handleSubscriptionActivated(event.payload.subscription.entity);
         break;
 
       case "subscription.pending":

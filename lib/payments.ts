@@ -1,28 +1,28 @@
 import { currentUser } from '@clerk/nextjs/server';
 import { getDbConnection } from './db';
 
-export async function handleSubscriptionActivated(subscription: any) {
-    const user = await currentUser();
-    console.log('user', user);
-  const userId = user?.id ?? '';
-  const customerId = subscription?.customer_id;
-  const planId = subscription?.plan_id;
-  const email = subscription.notes?.userEmail || ''; // Ensure email is collected earlier
+// export async function handleSubscriptionActivated(subscription: any) {
+//     const user = await currentUser();
+//     console.log('user', user);
+//   const userId = user?.id ?? '';
+//   const customerId = subscription?.customer_id;
+//   const planId = subscription?.plan_id;
+//   const email = subscription.notes?.userEmail || ''; // Ensure email is collected earlier
  
-  const fullName = subscription.notes?.name || '';
+//   const fullName = subscription.notes?.name || '';
 
-  if (email && planId) {
+//   if (email && planId) {
     
-    await createOrUpdateUser({
-      email,
-      fullName,
-      customerId,
-      planId,
-      userId,
-      status: 'active',
-    });
-  }
-}
+//     await createOrUpdateUser({
+//       email,
+//       fullName,
+//       customerId,
+//       planId,
+//       userId,
+//       status: 'active',
+//     });
+//   }
+// }
 
 export async function handleSubscriptionCancelled(subscription: any) {
   const customerId = subscription.customer_id;
@@ -31,39 +31,39 @@ export async function handleSubscriptionCancelled(subscription: any) {
   await sql`UPDATE users SET status = 'cancelled' WHERE customer_id = ${customerId}`;
 }
 
-async function createOrUpdateUser({
-  email,
-  fullName,
-  customerId,
-  planId,
-  userId,
-  status,
-}: {
-  email: string;
-  fullName: string;
-  customerId: string;
-  userId:string;
-  planId: string;
-  status: string;
-}) {
-  try {
-    const sql = await getDbConnection();
-    const [user] = await sql`SELECT * FROM users WHERE email = ${email}`;
+// async function createOrUpdateUser({
+//   email,
+//   fullName,
+//   customerId,
+//   planId,
+//   userId,
+//   status,
+// }: {
+//   email: string;
+//   fullName: string;
+//   customerId: string;
+//   userId:string;
+//   planId: string;
+//   status: string;
+// }) {
+//   try {
+//     const sql = await getDbConnection();
+//     const [user] = await sql`SELECT * FROM users WHERE email = ${email}`;
    
-    if (!user || user.length === 0 ) {
+//     if (!user || user.length === 0 ) {
       
-      await sql`INSERT INTO users (email, full_name, customer_id,clerk_user_id, price_id, status)
-                VALUES (${email}, ${fullName}, ${customerId},${userId}, ${planId}, ${status})`;
+//       await sql`INSERT INTO users (email, full_name, customer_id,clerk_user_id, price_id, status)
+//                 VALUES (${email}, ${fullName}, ${customerId},${userId}, ${planId}, ${status})`;
                
-    } else {
+//     } else {
       
-      await sql`UPDATE users SET status = ${status}, price_id = ${planId} WHERE email = ${email}`;
-      console.log('User updated');
-    }
-  } catch (error) {
-    console.error('Error creating/updating user', error);
-  }
-}
+//       await sql`UPDATE users SET status = ${status}, price_id = ${planId} WHERE email = ${email}`;
+//       console.log('User updated');
+//     }
+//   } catch (error) {
+//     console.error('Error creating/updating user', error);
+//   }
+// }
 
 export async function handlePaymentSuccess(payment: any) {
   const id = payment.id;
@@ -105,7 +105,7 @@ export async function handlePaymentSuccess(payment: any) {
       razorpay_payment_id
     )
     VALUES (
-      ${userId},
+      ${ClerkUserId},
       ${amount},
       ${status},
       ${priceId},
