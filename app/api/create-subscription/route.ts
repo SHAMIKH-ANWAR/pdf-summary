@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
       notes: {
         userEmail: userEmail || "user@example.com",
         name: `${firstName}  ${lastName}`,
-        clerkUserId:user.id
+        clerkUserId:userId
       },
     });
 
