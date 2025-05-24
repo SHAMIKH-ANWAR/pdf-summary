@@ -68,15 +68,14 @@ export async function handleSubscriptionCancelled(subscription: any) {
 export async function handlePaymentSuccess(payment: any) {
   const id = payment.id;
   
-  let amount = payment.amount;
-  amount = amount / 100;
+  let amount:number;
 
-  const status = payment.status || 'paid'; // default fallback
+  amount = payment.plan_id ==='plan_QX9EV669OhB0L7' ? 20 : 50; 
+
+  const status = payment.status || 'cancelled'; 
   const RazorpayCustomerId = payment.customer_id;
-  const userEmail = payment.email;
-  const priceId = amount === 20
-    ? 'plan_QX9EV669OhB0L7'
-    : 'plan_QX9HPNX2i0freE';
+  const userEmail = payment.notes?.userEmail||'';
+  const priceId = payment.plan_id || '';
     const ClerkUserId = payment.notes?.clerkUserId || '';
     console.log('ClerkUserId recieved in payments.ts', ClerkUserId);
 
@@ -89,7 +88,7 @@ export async function handlePaymentSuccess(payment: any) {
 
   const existingUser = await sql `SELECT * FROM users WHERE email = ${userEmail}`;
 
-  const planStatus = "active";
+  // const planStatus = "active";
 
   if( !existingUser || existingUser.length === 0) {
     console.log('Creating new user for payment');
