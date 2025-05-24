@@ -1,7 +1,7 @@
 
 
 import { currentUser } from "@clerk/nextjs/server"
-import { getPriceIdForActiveUser } from "@/lib/user"
+import { getPriceIdForActiveUser, getRazorpaySubscriptionIdForActiveUser } from "@/lib/user"
 import { pricingPlans } from "@/utils/constants"
 import Header from "./header"
 
@@ -20,7 +20,8 @@ export async function HeaderContainer() {
   let status: string | null = null
 
   if (email) {
-    const result = await getPriceIdForActiveUser(email)
+    const result = await getPriceIdForActiveUser(email);
+    const subscriptionId = await getRazorpaySubscriptionIdForActiveUser(user?.id);
     priceId = result?.price_id ?? null
     status = result?.status ?? null
 
