@@ -51,10 +51,10 @@ async function createOrUpdateUser({
     const [user] = await sql`SELECT * FROM users WHERE email = ${email}`;
    
     if (!user || user.length === 0 ) {
-      console.log('Creating new user');
+      
       await sql`INSERT INTO users (email, full_name, customer_id,clerk_user_id, price_id, status)
                 VALUES (${email}, ${fullName}, ${customerId},${userId}, ${planId}, ${status})`;
-                console.log('User created');
+               
     } else {
       
       await sql`UPDATE users SET status = ${status}, price_id = ${planId} WHERE email = ${email}`;
@@ -86,10 +86,8 @@ export async function handlePaymentSuccess(payment: any) {
 
   if( !existingUser || existingUser.length === 0) {
     console.log('Creating new user for payment');
-    await sql`
-      INSERT INTO users (email, full_name, customer_id, clerk_user_id, price_id, status)
-      VALUES (${userEmail}, ${payment.notes?.name || 'Unknown'}, ${RazorpayCustomerId}, ${ClerkUserId}, ${priceId}, 'active')
-    `;
+    await sql`INSERT INTO users (email, full_name, customer_id,clerk_user_id, price_id, status)
+                VALUES (${userEmail}, ${payment.notes?.name}, ${RazorpayCustomerId},${ClerkUserId}, ${priceId}, ${status})`;
   }
 
   await sql`
