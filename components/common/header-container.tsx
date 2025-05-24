@@ -18,10 +18,10 @@ export async function HeaderContainer() {
   let priceId: string | null = null
   let planName = "Buy a plan"
   let status: string | null = null
-
+  let subscriptionId: string | null = null
   if (email) {
     const result = await getPriceIdForActiveUser(email);
-    const subscriptionId = await getRazorpaySubscriptionIdForActiveUser(user?.id);
+     subscriptionId = await getRazorpaySubscriptionIdForActiveUser(user?.id);
     priceId = result?.price_id ?? null
     status = result?.status ?? null
 
@@ -39,6 +39,7 @@ export async function HeaderContainer() {
   return (
     <Header
       userPlanData={{
+        subscriptionId,
         priceId,
         planName,
         status,

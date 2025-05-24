@@ -16,6 +16,10 @@ export async function POST(request: NextRequest) {
     }
 
     const { priceId } = await request.json()
+    if (!priceId) {
+      return NextResponse.json({ error: "Price ID is required" }, { status: 400 })
+    }
+    
 
     console.log("request",request.body);
     

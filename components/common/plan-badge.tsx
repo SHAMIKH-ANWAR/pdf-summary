@@ -20,10 +20,12 @@ import { useRouter } from "next/navigation"
 export default function PlanBadge({
   priceId = null,
   planName = "Buy a plan",
+  subscriptionId,
   status = null,
 }: {
   priceId?: string | null
   planName?: string
+  subscriptionId?: string | null
   status?: string | null
 }) {
   const [showCancelDialog, setShowCancelDialog] = useState(false)
@@ -39,7 +41,7 @@ export default function PlanBadge({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ priceId }),
+        body: JSON.stringify({ priceId, subscriptionId }),
       })
 
       if (response.ok) {

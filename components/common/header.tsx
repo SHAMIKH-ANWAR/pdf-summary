@@ -11,6 +11,7 @@ import { Separator } from "@/components/ui/separator"
 type UserPlanData = {
   priceId: string | null
   planName: string
+  subscriptionId?: string | null
   status: string | null
 } | null
 
@@ -114,6 +115,7 @@ const Header = ({ userPlanData }: { userPlanData: UserPlanData }) => {
                       priceId={userPlanData.priceId}
                       planName={userPlanData.planName}
                       status={userPlanData.status}
+                      subscriptionId={userPlanData.subscriptionId}
                     />
                   )}
                   <UserButton />
