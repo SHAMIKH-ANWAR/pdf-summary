@@ -18,15 +18,13 @@ type PriceType = {
 }
 
 
-
-
-
 const PricingCard = ({name,price,description,items,id,paymentLink,priceId}:PriceType)=>{
     const handleSubscribe = async () => {
     try {
       const res = await fetch("/api/create-subscription", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify({ planId: priceId }),
       });
 
