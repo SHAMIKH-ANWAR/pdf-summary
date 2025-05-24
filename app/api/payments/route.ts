@@ -39,7 +39,7 @@ export const POST = async (req: NextRequest) => {
 
       case "payment.captured":
         console.log("✅ Payment captured:", event.payload.payment.entity);
-        await handlePaymentSuccess(event.payload.payment.entity);
+       
         // Mark subscription/payment success in NeonDB
         break;
 
@@ -48,6 +48,7 @@ export const POST = async (req: NextRequest) => {
           "🚀 Subscription activated:",
           event.payload.subscription.entity
         );
+         await handlePaymentSuccess(event.payload.subscription.entity);
         // await handleSubscriptionActivated(event.payload.subscription.entity);
         break;
 
