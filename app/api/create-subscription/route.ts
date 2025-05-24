@@ -35,7 +35,6 @@ export async function POST(req: NextRequest) {
       customer_notify: 1,
       notes: {
         userEmail: userEmail || "user@example.com",
-        userId,
         name: `${firstName}  ${lastName}`,
         clerkUserId:user.id
       },
