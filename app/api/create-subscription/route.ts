@@ -29,6 +29,9 @@ export async function POST(req: NextRequest) {
 
     const userEmail = user.email_addresses?.[0]?.email_address;
 
+    console.log("firstName:", firstName);
+    console.log("lastName:", lastName);
+
     const subscription = await razorpay.subscriptions.create({
       plan_id: planId,
       total_count: 12, // or 1 for yearly

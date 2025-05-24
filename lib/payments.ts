@@ -82,6 +82,11 @@ export async function handlePaymentSuccess(payment: any) {
 
   const sql = await getDbConnection();
 
+  console.log("payment.notes", payment?.notes);
+
+  const name = payment?.notes?.name || '';
+  console.log('Name from payment notes:', name);
+
   const existingUser = await sql `SELECT * FROM users WHERE email = ${userEmail}`;
 
   const planStatus = "active";
