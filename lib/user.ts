@@ -11,6 +11,14 @@ export async function getPriceIdForActiveUser(email: string) {
   return { price_id: query?.[0]?.price_id, status: query?.[0]?.status };
 }
 
+export async function getRazorpaySubscriptionIdForActiveUser(userId: string) {
+  const sql = await getDbConnection();
+  const query =
+    await sql`SELECT razorpay_payment_id FROM payments WHERE user_id = ${userId}`;
+  // console.log("query", query);
+  return query?.[0]?.razorpay_payment_id;
+}
+
 export async function getPriceIdForActiveUserByUserId(userId: string) {
   const sql = await getDbConnection();
   const query =
