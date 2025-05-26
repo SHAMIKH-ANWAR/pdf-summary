@@ -82,36 +82,25 @@ export default function LoadingSkeleton() {
       bg-background/80 backdrop-blur-xs border-t
       border-rose-500/10">
       <div className="flex justify-between items-center">
-        <
+        <Skeleton className="rounded-full w-12 h-12 bg-linear-to-br from-rose-500 to-rose-600 backdrop-blur-xs border border-rose-500/10" />
         
         <div className="flex gap-2">
-          {Array.from({ length: totalSections }).map((_, index) => (
-            <button
-              key={index}
-              onClick={() => onSectionSelect(index)}
-              className={cn(
-                'w-2 h-2 rounded-full transition-all duration-300',
-                currentSection === index
-                  ? 'bg-linear-to-r from-rose-500 to-rose-600'
-                  : 'bg-rose-500/20 hover:bg-rose-500/30'
-              )}
-            />
+          {[1,2,3].map((_, index) => (
+            // <button
+            //   key={index}
+            //   onClick={() => onSectionSelect(index)}
+            //   className={cn(
+            //     'w-2 h-2 rounded-full transition-all duration-300',
+            //     currentSection === index
+            //       ? 'bg-linear-to-r from-rose-500 to-rose-600'
+            //       : 'bg-rose-500/20 hover:bg-rose-500/30'
+            //   )}
+            // />
+            <Skeleton key={index} className="h-2 w-2 rounded-full bg-rose-500/20"/>
           ))}
         </div>
         
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={onNext}
-          disabled={currentSection === totalSections - 1}
-          className={cn(
-            'rounded-full w-12 h-12 transition-all duration-200 bg-linear-to-br from-rose-500 to-rose-600 backdrop-blur-xs border border-rose-500/10',
-            currentSection === totalSections - 1 ? 'opacity-50' 
-            : 'hover:bg-rose-500/20'
-          )}
-        >
-          <ChevronRight className="h-6 w-6" />
-        </Button>
+       <Skeleton className="rounded-full w-12 h-12 bg-linear-to-br from-rose-500"
       </div>
     </div>
     </Card>
