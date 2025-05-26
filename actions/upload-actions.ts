@@ -9,7 +9,7 @@ import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
 
-export async function getPdfText({fileUrl,fileName
+export async function generatePdfText({fileUrl,fileName
 }:{
   fileUrl: string;
   fileName: string;
@@ -24,7 +24,7 @@ export async function getPdfText({fileUrl,fileName
   try {
     const pdfText = await fetchAndExtractPdfText(pdfUrl);
     console.log(pdfText)
-    let summary;
+    // let summary;
     
     if(!pdfText){
       return {
@@ -41,7 +41,7 @@ export async function getPdfText({fileUrl,fileName
       message: "Summary generated successfuly",
       data: {
         title: formattedFileName,
-        summary,
+        pdfText,
       },
     };
 
