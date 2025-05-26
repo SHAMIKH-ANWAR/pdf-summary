@@ -30,21 +30,28 @@ export default function LoadingSkeleton() {
           </CardContent> */}
           {/* <SectionTitle title={sections[currentSection]?.title || ''}/> */}
           <div className="flex flex-col gap-2 mb-6 sticky top-0 pt-2 pb-4 bg-background/80 backdrop-blur-xs z-10">
-          <Skeleton className="h-12 w-3/4 mx-auto bg-rose-500/10"/>
+            <Skeleton className="h-12 w-3/4 mx-auto bg-rose-500/10" />
           </div>
           <div className="space-y-4">
-      <div className="prose prose-lg max-w-none">
-        {[1,2,3].map((_, index) => (
-          <div className="group relative bg-linear-to-br from-gray-500 to-gray-600/[0.03] p-4 rounded-2xl border border-gray-500/10" key={`numbered-${index}`}>
-            <div className="relative flex gap-4 items-center">
-                <div className="fle">
-
+            <div className="prose prose-lg max-w-none">
+              {[1, 2, 3].map((_, index) => (
+                <div
+                  className="group relative bg-linear-to-br from-gray-500 to-gray-600/[0.03] p-4 rounded-2xl border border-gray-500/10"
+                  key={`numbered-${index}`}
+                >
+                  <div className="relative flex gap-4 items-center">
+                    <div className="flex items-center">
+                      <Skeleton className="h-8 w-8 rounded-full bg-rose-500/10" />
+                    </div>
+                    <div className="flex-1">
+                      <Skeleton className="h-6 w-full bg-rose-500/10 mb-2" />
+                    </div>
+                  </div>
                 </div>
+              ))}
+              {}
             </div>
           </div>
-        ))}
-      </div>
-    </div>
         </div>
       </div>
       <NavigationControls
