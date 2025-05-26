@@ -35,7 +35,13 @@ export default function LoadingSkeleton() {
           <div className="space-y-4">
       <div className="prose prose-lg max-w-none">
         {[1,2,3].map((_, index) => (
-          
+          <div className="group relative bg-linear-to-br from-gray-500 to-gray-600/[0.03] p-4 rounded-2xl border border-gray-500/10" key={`numbered-${index}`}>
+            <div className="relative flex gap-4 items-center">
+                <div className="fle">
+
+                </div>
+            </div>
+          </div>
         ))}
       </div>
     </div>
