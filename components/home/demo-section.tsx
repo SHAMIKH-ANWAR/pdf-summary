@@ -29,7 +29,9 @@ export default function DemoSection() {
               documents into summaries
             </h3>
           </div>
-          <div className="flex justify-center items-center px-2 sm:px-4 lg:px-6"></div>
+          <div className="flex justify-center items-center px-2 sm:px-4 lg:px-6">
+            
+          </div>
         </div>
       </div>
     </section>
