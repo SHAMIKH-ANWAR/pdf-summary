@@ -152,6 +152,10 @@ const PricingCard = ({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
+        body: JSON.stringify({
+          priceId: userSubscription?.priceId,
+          subscriptionId: userSubscription?.subscriptionId,
+        }),
       })
 
       const data = await res.json()
