@@ -92,9 +92,12 @@ export default function UploadForm() {
    
   };
   return (
-    <div className="flex flex-col gap-8 w-full max-w-2xl mx-auto">
-      <UploadFormInput isLoading={isLoading} ref={formRef} onSubmit={handleSubmit} />
-      
+    // <div className="flex flex-col gap-8 w-full max-w-2xl mx-auto">
+    //   <UploadFormInput isLoading={isLoading} ref={formRef} onSubmit={handleSubmit} />
+
+    // </div>
+    <div className="">
+
     </div>
   );
 }
