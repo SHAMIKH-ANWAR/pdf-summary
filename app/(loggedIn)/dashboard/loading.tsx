@@ -1,15 +1,20 @@
 import BgGradient from "@/components/common/bg-gradient";
+import { Skeleton } from "@/components/ui/skeleton";
 
 function HeaderSkeleton(){
-    return <div></div>
+    return <div className="text-4xl font-bold tracking-tight bg-linear-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent">
+        Your Summaries
+    </div>
 }
 
 
 function SummaryCardSkeleton(){
     return (
-        <div>
-            
+        <div className="rounded-lg border border-gray-200 bg-white shadow-sm p-4 flex flex-col gap-2">
+            <Skeleton className="h-48 w-full rounded-lg"/>
         </div>
+    )
+}
 
 
 export default function LoadingSummaries(){
