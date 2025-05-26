@@ -9,6 +9,36 @@ import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
 
+export async function getPdfText({fileUrl,fileName
+}:{
+  fileUrl: string;
+  fileName: string;
+}) {
+  if (!fileUrl) {
+    return {
+      success: false,
+      message: "File URL is required",
+      data: null,
+    };
+  }
+  try {
+    const pdfText = await fetchAndExtractPdfText(fileUrl);
+    return {
+      success: true,
+      message: "PDF text extracted successfully",
+      data: { pdfText, fileName },
+    };
+  } catch (error) {
+    console.error("Error extracting PDF text:", error);
+    return {
+      success: false,
+      message: "Failed to extract PDF text",
+      data: null,
+    };
+  }
+}
+
+
 export async function generatePdfSummary(uploadResponse: {
   serverData: { userId: string; file: { url: string; name: string } };
 }) {
