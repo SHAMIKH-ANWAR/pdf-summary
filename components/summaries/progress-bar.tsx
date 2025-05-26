@@ -20,11 +20,11 @@ export function ProgressBar({
     <div className="absolute top-0 left-0 right-0 z-20 bg-background/80 backdrop-blur-sm pt-4 pb-2 border-b border-rose-50/10">
       <div className="flex gap-1.5 px-4 overflow-hidden">
         {sections.map((_, index) => (
-          <div className="h-1.5 flex-1 rounded-full bg-rose-500/10 overflow-hidden" key={index}>
+          <div className="h-1.5 flex-1 rounded-full bg-rose-400 overflow-hidden" key={index}>
             <div
               key={index}
               className={cn(
-                "h-1.5 rounded-full bg-rose-500/30 transition-all duration-300",
+                "h-1.5 rounded-full bg-rose-600 transition-all duration-300",
                 index === currentSection
                   ? "w-full"
                   : currentSection > index
