@@ -113,6 +113,7 @@ type PriceType = {
 type UserSubscription = {
   priceId: string | null
   status: string | null
+  subscriptionId: string | null
 } | null
 
 const PricingCard = ({
@@ -121,7 +122,6 @@ const PricingCard = ({
   description,
   items,
   id,
-  paymentLink,
   priceId,
   userSubscription,
 }: PriceType & { userSubscription: UserSubscription }) => {
