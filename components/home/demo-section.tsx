@@ -1,4 +1,5 @@
 import { Pizza } from "lucide-react";
+import { SummaryViewer } from "../summaries/summary-viewer";
 
 export default function DemoSection() {
   return (
@@ -30,7 +31,7 @@ export default function DemoSection() {
             </h3>
           </div>
           <div className="flex justify-center items-center px-2 sm:px-4 lg:px-6">
-            
+            <SummaryViewer summary=""/>
           </div>
         </div>
       </div>
