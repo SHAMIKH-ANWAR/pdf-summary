@@ -2,56 +2,39 @@ import { Pizza } from "lucide-react"
 import { SummaryViewer } from "../summaries/summary-viewer"
 
 const DEMO_SUMMARY = `
-# Executive Summary
-This comprehensive business plan outlines the strategic vision and operational framework for launching a revolutionary SaaS platform in the document management space.
+# 📌 Revolutionary SaaS Business Plan: The Future of Document Intelligence
+- ✨ A comprehensive strategy to launch an AI-powered document management platform that transforms how businesses process and analyze critical information
+- 🧠 The convergence of AI and document processing represents a $6.8B market opportunity with unprecedented growth potential
 
-The proposed solution addresses critical pain points in document processing and analysis.
+## 🗂️ Document Info
+- 📄 Type: Strategic Business Plan
+- 🎯 Audience: Investors, Entrepreneurs, Tech Leaders
 
-Key financial projections indicate strong growth potential with projected revenues of $2.5M in year one.
+## 💡 Highlights
+- 🔑 AI-powered document summarization addresses critical pain points in information processing
+- 🔑 Projected $2.5M revenue in year one with 1,000 active subscribers
+- 🔑 Enterprise-grade security with GDPR compliance and end-to-end encryption
 
-Market research validates significant demand for automated document summarization tools.
+## 🧭 Why It Matters
+- 💥 In today's information-heavy business environment, professionals waste 2.5 hours daily searching through documents. This platform eliminates that inefficiency by instantly transforming complex documents into actionable insights, enabling faster decision-making and dramatically improving productivity across organizations.
 
-# Market Analysis
-The global document management market is experiencing unprecedented growth, valued at $6.8 billion in 2023.
+## 🧵 Main Takeaways
+- 🔍 Market validation shows strong demand for automated document analysis tools
+- 💪 Competitive advantage through advanced AI and intuitive user experience
+- 🎯 Clear path to profitability with break-even projected by month 18
 
-Target demographics include legal professionals, researchers, and business analysts who process large volumes of documents daily.
+## 💼 Pro Tips
+- 🛠️ Focus on B2B sales through direct outreach and strategic partnerships
+- 💎 Implement agile development methodology to rapidly iterate based on user feedback
+- 📈 Diversify revenue streams early to mitigate market risks and ensure sustainable growth
 
-Competitive landscape analysis reveals limited solutions offering AI-powered summarization capabilities.
+## 🧠 Key Terms
+- 📘 NLP (Natural Language Processing): AI technology that helps computers understand human language
+- 📗 SaaS (Software as a Service): Cloud-based software delivered through subscription model
+- 📙 MVP (Minimum Viable Product): Basic version of product with core features for early testing
 
-Market penetration strategy focuses on B2B sales through direct outreach and strategic partnerships.
-
-# Product Features
-Core functionality includes advanced AI-powered document analysis using state-of-the-art natural language processing.
-
-User interface designed for intuitive navigation with responsive design across all devices.
-
-Integration capabilities with popular cloud storage platforms including Google Drive, Dropbox, and OneDrive.
-
-Real-time collaboration features enabling team-based document review and annotation.
-
-Enterprise-grade security with end-to-end encryption and compliance with GDPR and SOC 2 standards.
-
-# Financial Projections
-Year 1 revenue target: $2.5M with 1,000 active subscribers across basic and premium tiers.
-
-Customer acquisition cost projected at $150 per user with lifetime value of $2,400.
-
-Operating expenses include development costs, marketing spend, and infrastructure scaling.
-
-Break-even analysis indicates profitability by month 18 with positive cash flow thereafter.
-
-Investment requirements total $1.2M for initial development and 24-month runway.
-
-# Implementation Timeline
-Phase 1 (Months 1-3): MVP development and beta testing with select customers.
-
-Phase 2 (Months 4-6): Public launch with basic feature set and initial marketing campaigns.
-
-Phase 3 (Months 7-12): Feature expansion, enterprise sales, and international market entry.
-
-Phase 4 (Year 2): Advanced AI capabilities, mobile applications, and strategic acquisitions.
-
-Risk mitigation strategies include diversified revenue streams and agile development methodology.
+## 🏁 Final Thought
+- 🧠 Success in the document intelligence space requires balancing cutting-edge AI capabilities with user-friendly design - the companies that master this balance will dominate the next decade of business productivity tools
 `
 
 export default function DemoSection() {
