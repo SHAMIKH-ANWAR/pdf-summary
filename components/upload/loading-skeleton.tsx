@@ -100,7 +100,7 @@ export default function LoadingSkeleton() {
           ))}
         </div>
         
-       <Skeleton className="rounded-full w-12 h-12 bg-linear-to-br from-rose-500"
+       <Skeleton className="rounded-full w-12 h-12 bg-linear-to-br from-rose-500/50 to-rose-600/50"/>
       </div>
     </div>
     </Card>
