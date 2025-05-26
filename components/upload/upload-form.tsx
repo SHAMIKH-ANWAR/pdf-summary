@@ -1,7 +1,7 @@
 "use client";
 
 import {  z } from "zod";
-import FormInput from "./upload-form-input";
+import  { UploadFormInput } from "./upload-form-input";
 import { useUploadThing } from "@/utils/uploadthing";
 import { toast } from "sonner";
 import { generatePdfSummary, storePdfSummaryAction } from "@/actions/upload-actions";
@@ -93,7 +93,8 @@ export default function UploadForm() {
   };
   return (
     <div className="flex flex-col gap-8 w-full max-w-2xl mx-auto">
-      <FormInput isLoading={isLoading} ref={formRef} onSubmit={handleSubmit} />
+      <UploadFormInput isLoading={isLoading} ref={formRef} onSubmit={handleSubmit} />
+      
     </div>
   );
 }
