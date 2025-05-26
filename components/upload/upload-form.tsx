@@ -96,8 +96,16 @@ export default function UploadForm() {
     //   <UploadFormInput isLoading={isLoading} ref={formRef} onSubmit={handleSubmit} />
 
     // </div>
-    <div className="">
-
+    <div className="flex flex-col gap-8 w-full max-w-2xl mx-auto mt-2">
+      <div className="relative">
+        <div className="absolute inset-0 flex items-center" aria-hidden="true">
+          <div className="w-full border-t border-gray-200 dark:border-gray-800"/>
+          <div className="">
+            
+          </div>
+          
+        </div>
+      </div>
     </div>
   );
 }
