@@ -12,14 +12,14 @@ export default function LoadingSkeleton() {
                 <div className="h-1.5 flex-1 rounded-full bg-rose-500 overflow-hidden" key={index}>
                   <div
                     key={index}
-                    className={cn(
+                    className=
                       "h-1.5 rounded-full bg-rose-700 transition-all duration-300",
                       index === currentSection
                         ? "w-full"
                         : currentSection > index
                         ? "w-full opacity-10"
                         : "w-0"
-                    )}
+                    
                     style={{ flexGrow: 1 }}
                     onClick={() => onSectionSelect(index)}
                   />
