@@ -12,6 +12,9 @@ function HeaderSkeleton() {
           <Skeleton className="h-6 w-96"/>
         </p>
       </div>
+      <div className="self-start">
+        <Skeleton className="h-10 w-32"/>
+      </div>
     </div>
   );
 }
