@@ -22,19 +22,35 @@ export async function getPdfText({fileUrl,fileName
     };
   }
   try {
-    const pdfText = await fetchAndExtractPdfText(fileUrl);
+    const pdfText = await fetchAndExtractPdfText(pdfUrl);
+    console.log(pdfText)
+    let summary;
+    
+    if(!pdfText){
+      return {
+        success: false,
+        message: "Failed to extract text from PDF",
+        data: null,
+      };
+    }
+
+    const formattedFileName = formatFileNameAsTitle(fileName);
+
     return {
       success: true,
-      message: "PDF text extracted successfully",
-      data: { pdfText, fileName },
+      message: "Summary generated successfuly",
+      data: {
+        title: formattedFileName,
+        summary,
+      },
     };
-  } catch (error) {
-    console.error("Error extracting PDF text:", error);
+
+  } catch (err) {
     return {
-      success: false,
-      message: "Failed to extract PDF text",
-      data: null,
-    };
+        success:false,
+        message:'File upload failed',
+        data:null
+    }
   }
 }
 
