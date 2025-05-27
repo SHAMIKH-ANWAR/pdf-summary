@@ -6,6 +6,8 @@ import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
 
+
+
 export default async function Upload(){
     const user = await currentUser();
     if(!user?.id){
