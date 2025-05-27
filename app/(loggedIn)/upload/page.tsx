@@ -6,7 +6,7 @@ import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
 
-
+export const maxDuration =20;
 
 export default async function Upload(){
     const user = await currentUser();
