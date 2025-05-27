@@ -94,6 +94,7 @@ export default function UploadForm() {
       });
 
       //show toast generating pdf summary
+      
 
       const { data = null, message = null } = summaryResult || {};
       
@@ -105,7 +106,7 @@ export default function UploadForm() {
           summary: data.summary,
           fileName: file.name,
         });
-        // save summary to db  and show toast
+        //show taost summary generated successfully
         formRef.current?.reset();
         router.push(`/summaries/${storeResult.data.id}`);
       }
