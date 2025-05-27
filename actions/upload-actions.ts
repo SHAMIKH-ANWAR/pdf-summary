@@ -154,19 +154,20 @@ export async function savePdfSummaryToDb({
   }
 }
 
+interface PdfSummaryType{
+  fileUrl:string;
+  summary:string;
+  title:string;
+  fileName:string;
+}
+
 export async function storePdfSummaryAction({
-  userId,
+  
   fileUrl,
   summary,
   title,
   fileName,
-}: {
-  userId: string;
-  fileUrl: string;
-  summary: string;
-  title: string;
-  fileName: string;
-}) {
+}: PdfSummaryType) {
   let savedSummary: any;
   try {
     const { userId } = await auth();
