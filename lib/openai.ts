@@ -39,7 +39,7 @@ export async function generateSummaryFromOpenAI(pdfText: string) {
     const response = await fetch("https://api-inference.huggingface.co/models/facebook/bart-large-cnn", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer YOUR_HUGGINGFACE_API_TOKEN`,
+        "Authorization": `Bearer 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`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({ inputs: pdfText, parameters: { max_length: 150, do_sample: false } }),
