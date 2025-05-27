@@ -6,12 +6,14 @@ import { useUploadThing } from "@/utils/uploadthing";
 import { toast } from "sonner";
 import {
   generatePdfSummary,
+  generatePdfText,
   storePdfSummaryAction,
 } from "@/actions/upload-actions";
 import { useRef, useState } from "react";
 // import { title } from "process";
 import { useRouter } from "next/navigation";
 import LoadingSkeleton from "./loading-skeleton";
+import { formatFileNameAsTitle } from "@/utils/format-utils";
 
 const schema = z.object({
   file: z
@@ -72,25 +74,40 @@ export default function UploadForm() {
       toast("Processing PDF", {
         description: "Hang tight! Our AI is reading through your document!",
       });
-      const result = await generatePdfSummary(resp);
+      // const result = await generatePdfSummary(resp);
 
-      const { data = null, message = null } = result || {};
+      // if (data) {
+      //show toast processing pdf
+      let storeResult: any;
+      formRef.current?.reset();
+      //show toast
 
-      if (data) {
-        let storeResult: any;
+      const formattedFileName = formatFileNameAsTitle(file.name);
+      const result = await generatePdfText({
+        fileUrl: resp[0].serverData.file.url,
+      });
+      //show toast generating pdf our ai is reading your document
+      
+      const summaryResult = await generatePdfSummary({
+        pdfText:result?.data?.pdfText ?? "",
+        fileName: formattedFileName,
+      });
+
+      //show toast generating pdf summary
+
+      const { data = null, message = null } = summaryResult || {};
+      
+      //save to db
+      if (data?.summary) {
+        storeResult = await storePdfSummaryAction({
+          title: formattedFileName,
+          fileUrl: resp[0].serverData.file.url,
+          summary: data.summary,
+          fileName: file.name,
+        });
+        // save summary to db  and show toast
         formRef.current?.reset();
-        //show toast
-        if (data.summary) {
-          //save to db
-          storeResult = await storePdfSummaryAction({
-            title: data.title,
-            fileUrl: resp[0].serverData.file.url,
-            summary: data.summary,
-            fileName: file.name,
-          });
-          formRef.current?.reset();
-          router.push(`/summaries/${storeResult.data.id}`);
-        }
+        router.push(`/summaries/${storeResult.data.id}`);
       }
     } catch (error) {
       console.error("Error Occured", error);
@@ -118,11 +135,15 @@ export default function UploadForm() {
       <UploadFormInput
         isLoading={isLoading}
         ref={formRef}
-        onSubmit={handleSubmit}/>
-        {isLoading && (
-          <>
+        onSubmit={handleSubmit}
+      />
+      {isLoading && (
+        <>
           <div className="relative">
-            <div className="absolute inset-0 flex items-center" aria-hidden="true">
+            <div
+              className="absolute inset-0 flex items-center"
+              aria-hidden="true"
+            >
               <div className="w-full border-t border-gray-200 dark:border-gray-800" />
             </div>
             <div className="relative flex justify-center">
@@ -131,8 +152,9 @@ export default function UploadForm() {
               </span>
             </div>
           </div>
-          <LoadingSkeleton/>
-          </>)}
+          <LoadingSkeleton />
+        </>
+      )}
     </div>
   );
 }
