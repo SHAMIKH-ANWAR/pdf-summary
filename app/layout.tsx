@@ -9,6 +9,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 // import { pricingPlans } from "@/utils/constants";
 import { HeaderContainer } from "@/components/common/header-container";
 import { Toaster } from "@/components/toaster";
+import { ORIGIN_URL } from "@/utils/helpers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,9 +27,13 @@ export const metadata: Metadata = {
   openGraph:{
     images:[
       {
-        url:
+        url:'/Screenshot(119).png',
       }
     ]
+  },
+  metadataBase: new URL(ORIGIN_URL),
+  alternates:{
+    canonical: ORIGIN_URL,
   }
 };
 
