@@ -11,8 +11,8 @@ export default function UploadHeader(){
 
         </Badge>
         </div>
-        <div className="capitalize text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl ">
-        <h1>Start Uploading Your PDF's</h1>
+        <div className="capitalize text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        <h1 className="mb-4">Start Uploading Your PDF's</h1>
         <p>Upload your PDF and let our AI do the magic!</p>
         </div>
         
