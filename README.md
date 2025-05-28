@@ -2,7 +2,7 @@
 
 Built with Next.js 15 App Router, Clerk for Auth, React, Llama AI, Langchain, ShadCN UI components, Tailwind CSS 4, NeonDB, UploadThing, Razorpay for payments, TypeScript, TailwindCSS and more.
 
-![Project Image](/Screen)
+![Project Image](/Screenshot(119).png)
 
 ## ✨ Features
 
