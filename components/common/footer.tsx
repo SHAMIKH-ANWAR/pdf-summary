@@ -36,17 +36,17 @@ const Footer: React.FC = () => {
             <ul className="space-y-2">
               <li>
                 <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
-                  Contact
+                  Github
                 </a>
               </li>
               <li>
                 <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
-                  Our Story
+                  LinkedIn
                 </a>
               </li>
               <li>
                 <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
-                  Careers
+                  Leetcode
                 </a>
               </li>
             </ul>
@@ -60,22 +60,22 @@ const Footer: React.FC = () => {
             <ul className="space-y-2">
               <li>
                 <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
-                  Build Modern Full-Stack Apps: Next.js Course
+                  Build Modern Full-Stack Apps: ShopSphere
                 </a>
               </li>
               <li>
                 <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
-                  Next.js Workshop
+                  React Weather App
                 </a>
               </li>
               <li>
                 <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
-                  Developer to Leader
+                  Portfolio
                 </a>
               </li>
               <li>
                 <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
-                  Engineering Leader's Playbook
+                  AI PDF Summarizer
                 </a>
               </li>
             </ul>
@@ -84,12 +84,12 @@ const Footer: React.FC = () => {
           {/* Resources column */}
           <div>
             <h4 className="uppercase text-sm font-semibold text-gray-500 tracking-wider mb-4">
-              Resources
+              Social
             </h4>
             <ul className="space-y-2">
               <li>
                 <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
-                  Blog
+                  Email
                 </a>
               </li>
               <li>
