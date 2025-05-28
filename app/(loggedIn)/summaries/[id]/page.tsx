@@ -11,17 +11,17 @@ interface SummaryPageProps {
 }
 
 export default async function SummaryPage({ params }: SummaryPageProps) {
-  const { id } = params;
+  const { id } =  params;
   const summary = await getSummaryById(id);
 
   if (!summary) {
     notFound();
   }
 
-  const paramsProp = {
-    Promise: Promise<Response>,
-    id: String,
-  };
+  // const paramsProp = {
+  //   Promise: Promise<Response>,
+  //   id: String,
+  // };
 
   const { title, summary_text, file_name, word_count, created_at,original_file_url } = summary;
 

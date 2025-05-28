@@ -3,7 +3,7 @@
 import { getDbConnection } from "@/lib/db";
 import { generateSummaryFromGemini } from "@/lib/geminiai";
 import { fetchAndExtractPdfText } from "@/lib/langchain";
-import { generateSummaryFromOpenAI } from "@/lib/openai";
+import { generateSummaryFromDeepSeek, generateSummaryFromOpenAI } from "@/lib/openai";
 import { formatFileNameAsTitle } from "@/utils/format-utils";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
@@ -78,7 +78,7 @@ export async function generatePdfSummary({
     // console.log(pdfText)
     let summary;
     try {
-      const summary = await generateSummaryFromOpenAI(pdfText);
+       summary = await generateSummaryFromDeepSeek(pdfText);
       console.log({ summary });
     } catch (error) {
       console.log(error);
