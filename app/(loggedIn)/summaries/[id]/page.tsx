@@ -10,8 +10,8 @@ interface SummaryPageProps {
   params: { id: string };
 }
 
-export default async function SummaryPage({ params }: SummaryPageProps) {
-  const { id } =  params;
+export default async function SummaryPage(props: SummaryPageProps) {
+  const { id } = await props.params;
   const summary = await getSummaryById(id);
 
   if (!summary) {
