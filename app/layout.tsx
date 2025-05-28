@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     canonical: ORIGIN_URL,
   },
   icons:{
-    icon:''
+    icon:'/favicon.svg'
   }
 };
 
