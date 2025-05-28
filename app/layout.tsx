@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/common/header";
+// import Header from "@/components/common/header";
 import Footer from "@/components/common/footer";
 import { ClerkProvider } from "@clerk/nextjs";
-import { getPriceIdForActiveUser } from "@/lib/user";
-import { currentUser } from "@clerk/nextjs/server";
-import { pricingPlans } from "@/utils/constants";
+// import { getPriceIdForActiveUser } from "@/lib/user";
+// import { currentUser } from "@clerk/nextjs/server";
+// import { pricingPlans } from "@/utils/constants";
 import { HeaderContainer } from "@/components/common/header-container";
+import { Toaster } from "@/components/toaster";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,6 +39,7 @@ export default async function RootLayout({
           <div className=" relative flex flex-col min-h-screen">
             <HeaderContainer/>
             <main className="flex-1">{children}</main>
+            <Toaster/>
             <Footer />
           </div>
         </body>
