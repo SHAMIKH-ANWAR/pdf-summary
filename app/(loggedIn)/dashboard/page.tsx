@@ -13,7 +13,7 @@ export default async function DashboardPage() {
   // const uploadLimit = 5;
   const user = await currentUser();
   const userId = user?.id;
-  console.log("userId", userId);
+  // console.log("userId", userId);
   if (!userId) {
     return redirect("/sign-in");
   }

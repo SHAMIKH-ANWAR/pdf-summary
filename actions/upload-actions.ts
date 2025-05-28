@@ -18,7 +18,7 @@ export async function generatePdfText({ fileUrl }: { fileUrl: string }) {
   }
   try {
     const pdfText = await fetchAndExtractPdfText(fileUrl);
-    console.log(pdfText);
+    // console.log(pdfText);
     // let summary;
 
     if (!pdfText) {
@@ -79,7 +79,7 @@ export async function generatePdfSummary({
     let summary;
     try {
        summary = await generateSummaryFromDeepSeek(pdfText);
-      console.log({ summary });
+      // console.log({ summary });
     } catch (error) {
       console.log(error);
       //call gemini api to generate summary

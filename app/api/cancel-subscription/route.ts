@@ -16,8 +16,8 @@ export async function POST(request: NextRequest) {
     }
 
     const { priceId,subscriptionId } = await request.json();
-    console.log("priceId", priceId);
-    console.log("subscriptionId", subscriptionId);
+    // console.log("priceId", priceId);
+    // console.log("subscriptionId", subscriptionId);
     if (!priceId) {
       return NextResponse.json({ error: "Price ID is required" }, { status: 400 })
     }
@@ -29,10 +29,10 @@ export async function POST(request: NextRequest) {
     }
 
 
-    console.log("request",request.body);
+    // console.log("request",request.body);
     
 
-    console.log("Cancelling subscription for user:", user.id, "priceId:", priceId, "subscriptionId:", subscriptionId)
+    // console.log("Cancelling subscription for user:", user.id, "priceId:", priceId, "subscriptionId:", subscriptionId)
 
     // For now, just return success
     // Replace this with your actual cancellation logic

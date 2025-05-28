@@ -30,87 +30,87 @@ export const POST = async (req: NextRequest) => {
   try {
     switch (event.event) {
       case "payment.authorized":
-        console.log("🟡 Payment authorized:", event.payload.payment.entity);
+        // console.log("🟡 Payment authorized:", event.payload.payment.entity);
         break;
 
       case "payment.failed":
-        console.log("❌ Payment failed:", event.payload.payment.entity);
+        // console.log("❌ Payment failed:", event.payload.payment.entity);
         break;
 
       case "payment.captured":
-        console.log("✅ Payment captured:", event.payload.payment.entity);
+        // console.log("✅ Payment captured:", event.payload.payment.entity);
        
         // Mark subscription/payment success in NeonDB
         break;
 
       case "subscription.activated":
-        console.log(
-          "🚀 Subscription activated:",
-          event.payload.subscription.entity
-        );
+        // console.log(
+        //   "🚀 Subscription activated:",
+        //   event.payload.subscription.entity
+        // );
          await handlePaymentSuccess(event.payload.subscription.entity);
         // await handleSubscriptionActivated(event.payload.subscription.entity);
         break;
 
       case "subscription.pending":
-        console.log(
-          "⏳ Subscription pending:",
-          event.payload.subscription.entity
-        );
+        // console.log(
+        //   "⏳ Subscription pending:",
+        //   event.payload.subscription.entity
+        // );
         break;
 
       case "subscription.paused":
-        console.log(
-          "⏸️ Subscription paused:",
-          event.payload.subscription.entity
-        );
+        // console.log(
+        //   "⏸️ Subscription paused:",
+        //   event.payload.subscription.entity
+        // );
         break;
 
       case "subscription.cancelled":
-        console.log(
-          "🛑 Subscription cancelled:",
-          event.payload.subscription.entity
-        );
+        // console.log(
+        //   "🛑 Subscription cancelled:",
+        //   event.payload.subscription.entity
+        // );
         await handleSubscriptionCancelled(event.payload.subscription.entity);
         break;
 
       case "subscription.completed":
-        console.log(
-          "✅ Subscription completed:",
-          event.payload.subscription.entity
-        );
+        // console.log(
+        //   "✅ Subscription completed:",
+        //   event.payload.subscription.entity
+        // );
         break;
 
       case "subscription.updated":
-        console.log(
-          "🔄 Subscription updated:",
-          event.payload.subscription.entity
-        );
+        // console.log(
+        //   "🔄 Subscription updated:",
+        //   event.payload.subscription.entity
+        // );
         break;
 
       case "payment_link.paid":
-        console.log("💰 Payment Link Paid:", event.payload.payment_link.entity);
+        // console.log("💰 Payment Link Paid:", event.payload.payment_link.entity);
         break;
 
       case "payment_link.partially_paid":
-        console.log(
-          "💸 Payment Link Partially Paid:",
-          event.payload.payment_link.entity
-        );
+        // console.log(
+        //   "💸 Payment Link Partially Paid:",
+        //   event.payload.payment_link.entity
+        // );
         break;
 
       case "payment_link.expired":
-        console.log(
-          "⌛ Payment Link Expired:",
-          event.payload.payment_link.entity
-        );
+        // console.log(
+        //   "⌛ Payment Link Expired:",
+        //   event.payload.payment_link.entity
+        // );
         break;
 
       case "payment_link.cancelled":
-        console.log(
-          "❎ Payment Link Cancelled:",
-          event.payload.payment_link.entity
-        );
+        // console.log(
+        //   "❎ Payment Link Cancelled:",
+        //   event.payload.payment_link.entity
+        // );
         break;
 
       default:
