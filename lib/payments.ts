@@ -77,14 +77,14 @@ export async function handlePaymentSuccess(payment: any) {
   const userEmail = payment.notes?.userEmail||'';
   const priceId = payment.plan_id || '';
     const ClerkUserId = payment.notes?.clerkUserId || '';
-    console.log('ClerkUserId recieved in payments.ts', ClerkUserId);
+    // console.log('ClerkUserId recieved in payments.ts', ClerkUserId);
 
   const sql = await getDbConnection();
 
-  console.log("payment.notes", payment?.notes);
+  // console.log("payment.notes", payment?.notes);
 
   const name = payment?.notes?.name || '';
-  console.log('Name from payment notes:', name);
+  // console.log('Name from payment notes:', name);
 
   const existingUser = await sql `SELECT * FROM users WHERE email = ${userEmail}`;
 
