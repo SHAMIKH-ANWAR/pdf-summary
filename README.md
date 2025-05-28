@@ -2,7 +2,7 @@
 
 Built with Next.js 15 App Router, Clerk for Auth, React, Llama AI, Langchain, ShadCN UI components, Tailwind CSS 4, NeonDB, UploadThing, Razorpay for payments, TypeScript, TailwindCSS and more.
 
-![Project Image](https://www.sommaire.vercel.app/opengraph-image.png)
+![Project Image](/Screen)
 
 ## ✨ Features
 
