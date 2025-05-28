@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a href="" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
+                <a href="https://leetcode.com/u/SHAMIKH_ANWAR/" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
                   Leetcode
                 </a>
               </li>
@@ -64,12 +64,12 @@ const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
+                <a href="https://weather-pro-pi.vercel.app/" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
                   React Weather App
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
+                <a href="https://shamikhanwar.vercel.app/" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
                   Portfolio
                 </a>
               </li>
@@ -98,15 +98,15 @@ const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
-                  Engineering Leader's Snacks Newsletter
+                <a href="https://twitter.com/ShamikhAnw58449" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
+                  X Profile
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
                   Free Course Next.js Hot Tips
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
