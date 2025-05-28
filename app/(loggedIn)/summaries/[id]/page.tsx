@@ -6,12 +6,12 @@ import { getSummaryById } from "@/lib/summary";
 import { FileText } from "lucide-react";
 import { notFound } from "next/navigation";
 
-interface SummaryPageProps {
+type SummaryPageProps = {
   params: { id: string };
 }
 
-export default async function SummaryPage(props: SummaryPageProps) {
-  const { id } =  props.params;
+export default async function SummaryPage(params: SummaryPageProps) {
+  const { id } =  params;
   const summary = await getSummaryById(id);
 
   if (!summary) {
