@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
+                <a href="https://github.com/SHAMIKH-ANWAR" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
                   Github
                 </a>
               </li>
@@ -89,15 +89,15 @@ const Footer: React.FC = () => {
             <ul className="space-y-2">
               <li>
                 <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
-                  Email
+                  Email:shamikhanwar815@gmail.com
                 </a>
               </li>
               <li>
                 <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
-                  Frontend Snacks Newsletter
+                  Linkedin Profile
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
                   Engineering Leader's Snacks Newsletter
                 </a>
@@ -106,7 +106,7 @@ const Footer: React.FC = () => {
                 <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
                   Free Course Next.js Hot Tips
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
