@@ -108,8 +108,11 @@ export default async function SummaryPage({ params }: PageProps) {
   const { id } = await params
   const summary = await getSummaryById(id)
 
+  if (!id || typeof id !== "string") notFound();
+
+
   if (!summary) {
-    notFound()
+    notFound();
   }
 
   const { title, summary_text, file_name, word_count, created_at, original_file_url } = summary
