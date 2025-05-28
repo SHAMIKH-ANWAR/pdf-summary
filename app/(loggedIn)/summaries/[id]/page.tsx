@@ -11,7 +11,7 @@ interface SummaryPageProps {
 }
 
 export default async function SummaryPage(props: SummaryPageProps) {
-  const { id } = await props.params;
+  const { id } =  props.params;
   const summary = await getSummaryById(id);
 
   if (!summary) {
