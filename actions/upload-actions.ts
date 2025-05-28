@@ -1,7 +1,7 @@
 "use server";
 
 import { getDbConnection } from "@/lib/db";
-import { generateSummaryFromGemini } from "@/lib/geminiai";
+import { generateSummaryFromGemini, generateSummaryFromLlamaInstruct } from "@/lib/together-ai-llama70B";
 import { fetchAndExtractPdfText } from "@/lib/langchain";
 import { generateSummaryFromDeepSeek, generateSummaryFromOpenAI } from "@/lib/together-ai-llama";
 import { formatFileNameAsTitle } from "@/utils/format-utils";
@@ -85,7 +85,7 @@ export async function generatePdfSummary({
       //call gemini api to generate summary
       if (error instanceof Error && error.message === "RATE_LIMIT_EXCEEDED") {
         try {
-          summary = await generateSummaryFromGemini(pdfText);
+          summary = await generateSummaryFromLlamaInstruct(pdfText);
         } catch (geminiError) {
           console.error(
             "Gemini API failed after openAI quote exceeded",
