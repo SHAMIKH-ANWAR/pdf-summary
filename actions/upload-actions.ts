@@ -3,7 +3,7 @@
 import { getDbConnection } from "@/lib/db";
 import { generateSummaryFromGemini } from "@/lib/geminiai";
 import { fetchAndExtractPdfText } from "@/lib/langchain";
-import { generateSummaryFromDeepSeek, generateSummaryFromOpenAI } from "@/lib/openai";
+import { generateSummaryFromDeepSeek, generateSummaryFromOpenAI } from "@/lib/together-ai-llama";
 import { formatFileNameAsTitle } from "@/utils/format-utils";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
