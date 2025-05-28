@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart } from 'lucide-react';
+import { Heart, User } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -12,11 +12,12 @@ const Footer: React.FC = () => {
           <div className="flex flex-col items-center md:items-start">
             <div className="flex items-center mb-4">
               <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-gray-200 flex-shrink-0">
-                <img 
+                {/* <img 
                   src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" 
                   alt="Profile" 
                   className="w-full h-full object-cover"
-                />
+                /> */}
+                <User className="w-full h-full object-cover text-gray-500" />
               </div>
             </div>
             <p className="text-sm text-gray-600 flex items-center">
