@@ -91,11 +91,11 @@ export async function handlePaymentSuccess(payment: any) {
   const paymentStatus = "paid";
 
   if( !existingUser || existingUser.length === 0) {
-    console.log('Creating new user for payment');
+    // console.log('Creating new user for payment');
     await sql`INSERT INTO users (email, full_name, customer_id,clerk_user_id, price_id, status)
                 VALUES (${userEmail}, ${name}, ${RazorpayCustomerId},${ClerkUserId}, ${priceId}, ${status})`;
   }else{
-    console.log('Updating existing user for payment');
+    // console.log('Updating existing user for payment');
     await sql`UPDATE users SET status = ${status}, price_id = ${priceId}, clerk_user_id = ${ClerkUserId} WHERE email = ${userEmail}`;
   }
 

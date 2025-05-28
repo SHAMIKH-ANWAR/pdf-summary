@@ -17,7 +17,7 @@ type UserPlanData = {
 
 const Header = ({ userPlanData }: { userPlanData: UserPlanData }) => {
   const [isOpen, setIsOpen] = useState(false)
-  console.log("Subscriptionn id in Header:", userPlanData?.subscriptionId)
+  // console.log("Subscriptionn id in Header:", userPlanData?.subscriptionId)
   return (
     <nav className="container flex items-center justify-between py-4 px-2 lg:px-8 mx-auto">
       <div className="flex lg:flex-1">

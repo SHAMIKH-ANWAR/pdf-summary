@@ -35,7 +35,7 @@ export default function PlanBadge({
   const handleCancelSubscription = async () => {
     setIsLoading(true)
     try {
-      console.log("jdjd",subscriptionId)
+      // console.log("jdjd",subscriptionId)
       // Replace this with your actual API endpoint
       const response = await fetch("/api/cancel-subscription", {
         method: "POST",
@@ -47,7 +47,7 @@ export default function PlanBadge({
 
       if (response.ok) {
         // Handle successful cancellation
-        console.log("Subscription cancelled successfully")
+        // console.log("Subscription cancelled successfully")
         // You might want to refresh the page or update the UI
         window.location.reload()
       } else {

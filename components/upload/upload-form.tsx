@@ -193,10 +193,10 @@ export default function UploadForm() {
 
   const { startUpload } = useUploadThing("pdfUploader", {
     onClientUploadComplete: () => {
-      console.log("Uploaded successfully")
+      // console.log("Uploaded successfully")
     },
     onUploadError: (err) => {
-      console.log("error occured while uploading", err)
+      // console.log("error occured while uploading", err)
       toast({
         variant: "destructive",
         title: "Upload failed",
@@ -204,7 +204,7 @@ export default function UploadForm() {
       })
     },
     onUploadBegin: ({ file }) => {
-      console.log("upload has begun for", file)
+      // console.log("upload has begun for", file)
     },
   })
 
