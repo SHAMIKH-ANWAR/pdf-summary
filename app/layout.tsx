@@ -31,7 +31,7 @@ export const metadata: Metadata = {
       },
     ],
   },
-  metadataBase: new URL(ORIGIN_URL),
+  metadataBase: new URL(ORIGIN_URL || "https://uploadthing.com"),
   alternates: {
     canonical: ORIGIN_URL,
   },
