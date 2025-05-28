@@ -203,7 +203,7 @@ export default function UploadForm() {
         description: "There was an error uploading your file. Please try again.",
       })
     },
-    onUploadBegin: ({ file }) => {
+    onUploadBegin: (file) => {
       // console.log("upload has begun for", file)
     },
   })
@@ -253,7 +253,7 @@ export default function UploadForm() {
 
       const formattedFileName = formatFileNameAsTitle(file.name)
       const result = await generatePdfText({
-        fileUrl: resp[0].serverData.file.url,
+        fileUrl: resp[0].serverData.fileUrl,
       })
 
       if (!result?.data?.pdfText) {
