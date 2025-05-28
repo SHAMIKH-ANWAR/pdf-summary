@@ -290,7 +290,7 @@ export default function UploadForm() {
 
         const storeResult = await storePdfSummaryAction({
           title: formattedFileName,
-          fileUrl: resp[0].serverData.file.url,
+          fileUrl: resp[0].serverData.fileUrl,
           summary: data.summary,
           fileName: file.name,
         })
