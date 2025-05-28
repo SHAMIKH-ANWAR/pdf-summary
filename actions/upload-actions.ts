@@ -1,10 +1,10 @@
 "use server";
 
 import { getDbConnection } from "@/lib/db";
-import { generateSummaryFromGemini, generateSummaryFromLlamaInstruct } from "@/lib/together-ai-llama70B";
+import {generateSummaryFromLlamaInstruct } from "@/lib/together-ai-llama70B";
 import { fetchAndExtractPdfText } from "@/lib/langchain";
-import { generateSummaryFromDeepSeek, generateSummaryFromOpenAI } from "@/lib/together-ai-llama";
-import { formatFileNameAsTitle } from "@/utils/format-utils";
+import { generateSummaryFromDeepSeek } from "@/lib/together-ai-llama";
+// import { formatFileNameAsTitle } from "@/utils/format-utils";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
