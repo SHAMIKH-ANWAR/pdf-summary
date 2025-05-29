@@ -12,7 +12,12 @@ const razorpay = new Razorpay({
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
+    console.log("Received body:", body);
     const { planId } = body;
+    console.log("Plan ID:", planId);
+    if (!planId) {
+      return NextResponse.json({ error: "Plan ID is required" }, { status: 400 });
+    }
     const { userId } = await auth();
     // console.log("Clerk user ID:", userId);
     if(!userId) {
