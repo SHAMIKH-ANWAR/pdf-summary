@@ -125,6 +125,8 @@ const PricingCard = ({
   priceId,
   userSubscription,
 }: PriceType & { userSubscription: UserSubscription }) => {
+  console.log("Rendering PricingCard for:", name, "with priceId:", priceId)
+  console.log("User subscription data:", userSubscription)
   const handleSubscribe = async () => {
     try {
       console.log("Subscribing to plan:", priceId)
@@ -303,7 +305,7 @@ export default function PricingSection({ userSubscription }: { userSubscription:
         )}
         <div className="relative flex justify-center flex-col lg:flex-row items-center lg:items-stretch gap-8">
           {pricingPlans.map((plan) => {
-            console.log("Rendering plan:", plan.id)
+            console.log("Rendering plan:", plan)
             return <PricingCard key={plan.id} {...plan} userSubscription={userSubscription} />
           })}
         </div>
