@@ -302,9 +302,10 @@ export default function PricingSection({ userSubscription }: { userSubscription:
           </div>
         )}
         <div className="relative flex justify-center flex-col lg:flex-row items-center lg:items-stretch gap-8">
-          {pricingPlans.map((plan) => (
-            <PricingCard key={plan.id} {...plan} userSubscription={userSubscription} />
-          ))}
+          {pricingPlans.map((plan) => {
+            console.log("Rendering plan:", plan.id)
+            return <PricingCard key={plan.id} {...plan} userSubscription={userSubscription} />
+          })}
         </div>
       </div>
     </section>
