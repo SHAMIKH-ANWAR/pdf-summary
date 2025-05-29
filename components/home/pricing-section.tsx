@@ -127,6 +127,7 @@ const PricingCard = ({
 }: PriceType & { userSubscription: UserSubscription }) => {
   const handleSubscribe = async () => {
     try {
+      console.log("Subscribing to plan:", priceId)
       const res = await fetch("/api/create-subscription", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
