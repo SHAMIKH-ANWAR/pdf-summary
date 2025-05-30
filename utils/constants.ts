@@ -9,7 +9,7 @@ export const pricingPlans= [
         items:['5 PDF summaries per month'],
         description:'For personal use',
         paymentLink:'',
-        priceId: isDev?'plan_QX9EV669OhB0L7':''
+        priceId: isDev?'plan_QX9EV669OhB0L7':'plan_QbC8DOdRnZUOAU'
     },
     {
         id:'pro',
@@ -18,6 +18,6 @@ export const pricingPlans= [
         items:['Unlimited PDF summaries','Priority processing','24/7 priority support','Markdown Export'],
         description:'For professionals and teams',
         paymentLink:'',
-        priceId:isDev?'plan_QX9HPNX2i0freE':''
+        priceId:isDev?'plan_QX9HPNX2i0freE':'plan_QbC8fDRKpTFjmo'
     }
 ];
