@@ -44,7 +44,7 @@ export async function hasReachedUploadLimit(userId: string) {
 
   // If user has no active subscription
   if (!priceInfo || !priceInfo.price_id) {
-    console.warn("No active subscription found. Blocking uploads.");
+    // console.warn("No active subscription found. Blocking uploads.");
     return { hasReachedLimit: true, uploadLimit: 0 };
   }
 

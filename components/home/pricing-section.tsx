@@ -92,13 +92,13 @@
 //   )
 // }
 
-
 "use client"
 
 import { cn } from "@/lib/utils"
-import { ArrowRight, CheckIcon, X } from "lucide-react"
+import { ArrowRight, CheckIcon, X } from 'lucide-react'
 import { Button } from "../ui/button"
 import { pricingPlans } from "@/utils/constants"
+import { useState } from "react"
 
 type PriceType = {
   id: string
@@ -125,11 +125,13 @@ const PricingCard = ({
   priceId,
   userSubscription,
 }: PriceType & { userSubscription: UserSubscription }) => {
-  console.log("Rendering PricingCard for:", name, "with priceId:", priceId)
-  console.log("User subscription data:", userSubscription)
+  // console.log("Rendering PricingCard for:", name, "with priceId:", priceId)
+  // console.log("User subscription data:", userSubscription)
+  const [loading, setLoading] = useState(false);
   const handleSubscribe = async () => {
     try {
-      console.log("Subscribing to plan:", priceId)
+      // console.log("Subscribing to plan:", priceId)
+      setLoading(true)
       const res = await fetch("/api/create-subscription", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -145,6 +147,7 @@ const PricingCard = ({
       }
     } catch (error) {
       console.error("Subscription error", error)
+      setLoading(false)
       alert("Something went wrong.")
     }
   }
@@ -227,9 +230,22 @@ const PricingCard = ({
           <div className="text-center text-sm text-blue-600 font-medium mb-2">Upgrade Available</div>
           <Button
             onClick={handleSubscribe}
-            className="w-full rounded-full flex items-center justify-center gap-2 bg-gradient-to-r from-rose-800 to-rose-500 hover:from-rose-500 hover:to-rose-800 text-white border-2 border-rose-500"
+            disabled={loading}
+            className={cn(
+              "w-full rounded-full flex items-center justify-center gap-2 bg-gradient-to-r from-rose-800 to-rose-500 hover:from-rose-500 hover:to-rose-800 text-white border-2 border-rose-500",
+              loading && "opacity-75 cursor-not-allowed"
+            )}
           >
-            Upgrade to Pro <ArrowRight size={18} />
+            {loading ? (
+              <>
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                Processing...
+              </>
+            ) : (
+              <>
+                Upgrade to Pro <ArrowRight size={18} />
+              </>
+            )}
           </Button>
         </div>
       )
@@ -239,12 +255,23 @@ const PricingCard = ({
     return (
       <Button
         onClick={handleSubscribe}
+        disabled={loading}
         className={cn(
           "w-full rounded-full flex items-center justify-center gap-2 bg-gradient-to-r from-rose-800 to-rose-500 hover:from-rose-500 hover:to-rose-800 text-white border-2 py-2",
           id === "pro" ? "bg-rose-900 border-rose-100" : "bg-rose-500 border-rose-500",
+          loading && "opacity-75 cursor-not-allowed"
         )}
       >
-        Buy Now <ArrowRight size={18} />
+        {loading ? (
+          <>
+            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+            Processing...
+          </>
+        ) : (
+          <>
+            Buy Now <ArrowRight size={18} />
+          </>
+        )}
       </Button>
     )
   }
@@ -305,7 +332,7 @@ export default function PricingSection({ userSubscription }: { userSubscription:
         )}
         <div className="relative flex justify-center flex-col lg:flex-row items-center lg:items-stretch gap-8">
           {pricingPlans.map((plan) => {
-            console.log("Rendering plan:", plan)
+            // console.log("Rendering plan:", plan)
             return <PricingCard key={plan.id} {...plan} userSubscription={userSubscription} />
           })}
         </div>

@@ -4,6 +4,7 @@ import {
   handlePaymentSuccess,
   // handleSubscriptionActivated,
   handleSubscriptionCancelled,
+  handleSubscriptionCompleted,
 } from "@/lib/payments";
 // import { currentUser } from "@clerk/nextjs/server";
 
@@ -79,6 +80,7 @@ export const POST = async (req: NextRequest) => {
         //   "✅ Subscription completed:",
         //   event.payload.subscription.entity
         // );
+        handleSubscriptionCompleted(event.payload.subscription.entity);
         break;
 
       case "subscription.updated":
