@@ -7,6 +7,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 // import { getPriceIdForActiveUser } from "@/lib/user";
 // import { currentUser } from "@clerk/nextjs/server";
 // import { pricingPlans } from "@/utils/constants";
+import { Analytics } from "@vercel/analytics/next";
 import { HeaderContainer } from "@/components/common/header-container";
 import { Toaster } from "@/components/toaster";
 import { ORIGIN_URL } from "@/utils/helpers";
@@ -35,9 +36,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: ORIGIN_URL,
   },
-  icons:{
-    icon:'/favicon.svg'
-  }
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default async function RootLayout({
@@ -54,6 +55,7 @@ export default async function RootLayout({
           <div className=" relative flex flex-col min-h-screen">
             <HeaderContainer />
             <main className="flex-1">{children}</main>
+            <Analytics />
             <Toaster />
             <Footer />
           </div>
