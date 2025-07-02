@@ -1,6 +1,6 @@
 import { isDev } from "./helpers";
 
-console.log('isDev:', isDev);
+
 export const pricingPlans= [
     {
         id:'basic',

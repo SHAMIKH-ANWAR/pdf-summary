@@ -80,7 +80,7 @@ export const POST = async (req: NextRequest) => {
         //   "✅ Subscription completed:",
         //   event.payload.subscription.entity
         // );
-        handleSubscriptionCompleted(event.payload.subscription.entity);
+        await handleSubscriptionCompleted(event.payload.subscription.entity);
         break;
 
       case "subscription.updated":
